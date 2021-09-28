@@ -11,23 +11,23 @@
   <div class="container">
     <div class="topico" *ngIf="channel.topic">{{channel.topic}}</div>
     <div class="content">
-      <div class="bubble">
+      <div class="bubble" *ngFor="let msg of channel.messages">
         <div class="avatar">
-          <img src="https://thira.tandilserver.com/avatar?usr=Alex" />
+          <img [src]="'https://thira.tandilserver.com/avatar?usr='+msg.author" />
         </div>
         <div class="body">
           <header>
-            <span class="name">Alex</span>
-            <span class="date">02/09/2021 15:51:50</span>
+            <span class="name">{{msg.author}}</span>
+            <!-- <span class="date">{{msg.date}}</span> -->
           </header>
           <section>
-            Message here
+            {{msg.content}}
           </section>
         </div>
       </div>
     </div>
     <div class="inputBox">
-      <input type="text" placeholder="Mensaje" />
+      <input type="text" placeholder="Mensaje" [(ngModel)]="message" (keypress)="kp($event)"/>
     </div>
   </div>
 </ion-content>

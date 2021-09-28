@@ -19,12 +19,15 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    overflow-y: scroll;
+    overflow-x: hidden;
     .bubble {
       display: flex;
-      margin: 10px;
-      background: #b2dcc3;
+      margin: 2px 5px;
+      background: #abf5afc7;
       padding: 5px;
       border-radius: 10px;
+      border: 1px solid #00000082;
       .avatar {
         img {
           max-width: 15vw;
@@ -48,6 +51,9 @@
             font-weight: bold;
             color: #000000d6;
           }
+        }
+        section {
+          font-size: 19px;
         }
       }
     }
