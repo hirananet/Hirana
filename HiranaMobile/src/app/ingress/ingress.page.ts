@@ -26,7 +26,7 @@ export class IngressPage implements OnInit, OnDestroy {
         }, 300);
       }
     });
-    if(!this.coreSrv.isIngressing()) {
+    if(!this.coreSrv.isIngressed()) {
       this.navCtrl.navigateRoot('/login');
       return;
     }
