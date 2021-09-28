@@ -1,3 +1,4 @@
+import { environment } from '../environment';
 import { CoreService } from './../core/core.service';
 import { Component, OnInit } from '@angular/core';
 import { ServerData } from 'ircore';
@@ -25,7 +26,7 @@ export class LoginPage implements OnInit {
     srvData.user.altNick = this.nick+'_';
     srvData.withWebSocket = true;
     srvData.withSSL = false;
-    srvData.serverID = 'SRVID';
+    srvData.serverID = environment.defaultServerID;
     this.coreSrv.connect(srvData);
     this.navCtrl.navigateRoot('/ingress');
   }
