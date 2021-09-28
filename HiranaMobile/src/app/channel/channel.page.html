@@ -8,5 +8,26 @@
 </ion-header>
 
 <ion-content>
-  <div class="topico" *ngIf="channel.topic">{{channel.topic}}</div>
+  <div class="container">
+    <div class="topico" *ngIf="channel.topic">{{channel.topic}}</div>
+    <div class="content">
+      <div class="bubble">
+        <div class="avatar">
+          <img src="https://thira.tandilserver.com/avatar?usr=Alex" />
+        </div>
+        <div class="body">
+          <header>
+            <span class="name">Alex</span>
+            <span class="date">02/09/2021 15:51:50</span>
+          </header>
+          <section>
+            Message here
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="inputBox">
+      <input type="text" placeholder="Mensaje" />
+    </div>
+  </div>
 </ion-content>

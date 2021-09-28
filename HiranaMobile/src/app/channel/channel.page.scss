@@ -1,10 +1,66 @@
-.topico {
-  padding: 10px 5px;
-  background: #f1f1f1;
-  border-bottom: 1px solid var(--ion-border-color, #cccccc);
-  font-size: 15px;
-  overflow-y: scroll;
-  width: auto;
-  font-style: italic;
-  white-space: nowrap;
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .topico {
+    padding: 10px 5px;
+    background: #f1f1f1;
+    border-bottom: 1px solid var(--ion-border-color, #cccccc);
+    font-size: 15px;
+    overflow-y: scroll;
+    width: auto;
+    font-style: italic;
+    white-space: nowrap;
+  }
+  .content {
+    height: 100%;
+    background: url('../../assets/pattern.svg');
+    background-color: #c4dece;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    .bubble {
+      display: flex;
+      margin: 10px;
+      background: #b2dcc3;
+      padding: 5px;
+      border-radius: 10px;
+      .avatar {
+        img {
+          max-width: 15vw;
+          max-height: 15vw;
+        }
+      }
+      .body {
+        width: 100%;
+        margin-left: 5px;
+        header {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          .name {
+            color: #003502;
+            font-weight: bold;
+          }
+          .date {
+            margin-right: 5px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #000000d6;
+          }
+        }
+      }
+    }
+  }
+  .inputBox {
+    padding: 5px;
+    background: white;
+    border-top: 1px solid var(--ion-border-color, #cccccc);
+    input {
+      width: 100%;
+      border: none;
+      padding: 5px 0px;
+      outline: none;
+    }
+  }
 }
