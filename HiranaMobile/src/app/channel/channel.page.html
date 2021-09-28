@@ -4,6 +4,11 @@
       <ion-back-button text="canales"></ion-back-button>
     </ion-buttons>
     <ion-title>{{channelHash}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary" (click)="openUsers()">
+        <ion-icon slot="icon-only" icon="people-circle-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

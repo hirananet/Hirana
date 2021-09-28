@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>users in {{channel.hashedName}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ul>
+    <div *ngFor="let user of channel.users">
+      {{user.fullNick.nick}}@{{user.fullNick.origin}}
+    </div>
+  </ul>
+</ion-content>

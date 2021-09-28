@@ -1,6 +1,8 @@
+import { UsersPage } from './users/users.page';
 import { environment } from './../environment';
 import { Channel, ChannelsService, ServerService } from 'ircore';
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-channel',
@@ -13,7 +15,7 @@ export class ChannelPage implements OnInit {
   public channel: Channel = new Channel('');
   public message: string;
 
-  constructor(private chanServ: ChannelsService, private serverSrv: ServerService) { }
+  constructor(private chanServ: ChannelsService, private serverSrv: ServerService, public modalController: ModalController) { }
 
   ngOnInit() {
   }
@@ -28,6 +30,16 @@ export class ChannelPage implements OnInit {
       this.serverSrv.sendTo(environment.defaultServerID, this.channelHash, this.message);
       this.message = '';
     }
+  }
+
+  async openUsers() {
+    const modal = await this.modalController.create({
+      component: UsersPage,
+      componentProps: {
+        channel: this.channel
+      }
+    });
+    return await modal.present();
   }
 
 }

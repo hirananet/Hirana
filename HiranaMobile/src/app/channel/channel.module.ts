@@ -1,3 +1,4 @@
+import { UsersPage } from './users/users.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,6 @@ import { ChannelPage } from './channel.page';
     IonicModule,
     ChannelPageRoutingModule
   ],
-  declarations: [ChannelPage]
+  declarations: [ChannelPage, UsersPage]
 })
 export class ChannelPageModule {}

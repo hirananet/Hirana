@@ -42,7 +42,7 @@ export class ChannelsPage implements OnInit {
           placeholder: '#main'
         },
       ],
-      buttons: [{
+      buttons: ['Cancelar', {
         text: 'OK',
         handler: (d) => {
           if(d.channelName) {
