@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Hirana.net</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <section>
+    <ion-item-group>
+      <ion-item lines="none">
+        <ion-label position="floating">Nick</ion-label>
+        <ion-input [(ngModel)]="nick"></ion-input>
+      </ion-item>
+    </ion-item-group>
+    <ion-button expand="block" (click)="simpleLogin()">Login</ion-button>
+  </section>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="cog"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

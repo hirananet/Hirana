@@ -1,0 +1,21 @@
+.bg {
+  position: relative;
+  height: calc(100% - 5px);
+  ul {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 1vw;
+    list-style: none;
+    font-family: monospace;
+    white-space: pre;
+    margin: auto 0 0;
+    max-height: 100%;
+    overflow-y: auto;
+    li {
+      font-size: 10px;
+      margin-bottom: 2px;
+    }
+  }
+}

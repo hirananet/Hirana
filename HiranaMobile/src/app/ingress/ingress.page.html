@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Hirana.net</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-progress-bar type="indeterminate"></ion-progress-bar>
+  <div class="bg">
+    <ul>
+      <li class="entry" *ngFor="let message of messages">
+        <span *ngIf="!fullData">
+          {{message.content}}
+        </span>
+        <span *ngIf="fullData">
+          {{message.raw}}
+        </span>
+      </li>
+    </ul>
+  </div>
+</ion-content>
