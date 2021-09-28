@@ -4,7 +4,8 @@
     <ion-list-header>
       Canales
     </ion-list-header>
-    <ion-item-sliding>
+
+    <!-- <ion-item-sliding>
       <ion-item>
         <ion-icon slot="start" name="chatbubbles-sharp"></ion-icon>
         <ion-label>Channel</ion-label>
@@ -12,6 +13,22 @@
       <ion-item-options side="end">
         <ion-item-option color="danger">Leave</ion-item-option>
       </ion-item-options>
-    </ion-item-sliding>
+    </ion-item-sliding> -->
+
   </ion-list>
+
+  <div class="placeholder">
+    <img src="assets/b612.png" />
+    <h4>No tienes canales!</h4>
+    <p>
+      Unete a un canal con el botón de <span class="btnMock">+</span> <br/>
+      O explora la lista (<ion-icon name="albums-sharp"></ion-icon>) de canales
+    </p>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add-sharp"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
