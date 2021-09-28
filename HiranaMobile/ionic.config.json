@@ -1,0 +1,7 @@
+{
+  "name": "HiranaMobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
