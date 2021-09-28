@@ -6,17 +6,17 @@ import { Injectable } from '@angular/core';
 })
 export class CoreService {
 
-  private ingressing = false;
+  private ingressed = false;
 
   constructor(private serverSrv: ServerService) { }
 
   connect(srvData: ServerData) {
     this.serverSrv.connect(srvData);
-    this.ingressing = true;
+    this.ingressed = true;
   }
 
-  public isIngressing() {
-    return this.ingressing;
+  public isIngressed() {
+    return this.ingressed;
   }
 
 }
