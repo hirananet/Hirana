@@ -10,17 +10,20 @@ import { AlertController } from '@ionic/angular';
 export class ChannelsPage implements OnInit {
 
   public channels: ChannelData[];
-  public hasChannels: boolean = false;
 
   constructor(private readonly chanServ: ChanServ, public alertController: AlertController) { }
 
   ngOnInit() {
     this.channels = this.chanServ.getChannelList()
-    this.hasChannels = this.channels.length > 0;
   }
 
   public leave(chan: string) {
     this.chanServ.leaveChannel(chan);
+  }
+
+
+  public debug() {
+    console.log(this.channels);
   }
 
   async addServer() {

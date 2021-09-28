@@ -1,6 +1,6 @@
 <ion-content>
   <ion-searchbar placeholder="Canales"></ion-searchbar>
-  <ion-list *ngIf="hasChannels">
+  <ion-list *ngIf="this.channels && this.channels.length > 0">
     <ion-list-header>
       Canales
     </ion-list-header>
@@ -17,8 +17,8 @@
 
   </ion-list>
 
-  <div class="placeholder" *ngIf="!hasChannels">
-    <img src="assets/b612.png" />
+  <div class="placeholder" *ngIf="!this.channels || this.channels.length == 0">
+    <img src="assets/b612.png" (click)="debug()"/>
     <h4>No tienes canales!</h4>
     <p>
       Unete a un canal con el botón de <span class="btnMock">+</span> <br/>
