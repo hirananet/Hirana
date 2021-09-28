@@ -6,7 +6,7 @@
     </ion-list-header>
 
     <ion-item-sliding *ngFor="let channel of channels">
-      <ion-item>
+      <ion-item (click)="openChannel(channel.name)">
         <ion-icon slot="start" name="chatbubbles-sharp"></ion-icon>
         <ion-label>{{channel.name}}</ion-label>
       </ion-item>

@@ -1,6 +1,6 @@
 import { ChanServ, ChannelData } from './channels.service';
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-channels',
@@ -11,10 +11,14 @@ export class ChannelsPage implements OnInit {
 
   public channels: ChannelData[];
 
-  constructor(private readonly chanServ: ChanServ, public alertController: AlertController) { }
+  constructor(private readonly chanServ: ChanServ, public alertController: AlertController, private navCtrl: NavController) { }
 
   ngOnInit() {
     this.channels = this.chanServ.getChannelList()
+  }
+
+  public openChannel(chan: string) {
+    this.navCtrl.navigateForward(`/channel#${chan}`)
   }
 
   public leave(chan: string) {

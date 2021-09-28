@@ -22,6 +22,11 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'channel',
+    loadChildren: () => import('./channel/channel.module').then( m => m.ChannelPageModule),
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({
