@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Server configuration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list lines="full" class="ion-no-margin">
+      <ion-list-header lines="full">
+        <ion-label>
+          Server
+        </ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Server host</ion-label>
+        <ion-input placeholder="irc.hirana.net" [(ngModel)]="serverHost"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Server port</ion-label>
+        <ion-input type="number" placeholder="443" [(ngModel)]="serverPort"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>With TLS</ion-label>
+        <ion-toggle [(ngModel)]="withSSL"></ion-toggle>
+      </ion-item>
+      <ion-list-header lines="full">
+        <ion-label>
+          User
+        </ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Nick</ion-label>
+        <ion-input placeholder="MyNick" [(ngModel)]="nick"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Alternative nick</ion-label>
+        <ion-input placeholder="MyNick_" [(ngModel)]="altNick"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Use bouncer</ion-label>
+        <ion-toggle [(ngModel)]="withBouncer"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>User (bouncers)</ion-label>
+        <ion-input placeholder="MyAccount" [(ngModel)]="user" [disabled]="!withBouncer"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Password (bouncers)</ion-label>
+        <ion-input type="password" placeholder="Password" [(ngModel)]="password" [disabled]="!withBouncer"></ion-input>
+      </ion-item>
+      <ion-list-header lines="full">
+        <ion-label>
+          Gateway
+        </ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>With Websocket</ion-label>
+        <ion-toggle [(ngModel)]="withWebSocket"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Gateway server</ion-label>
+        <ion-input placeholder="wss://wircg.tandilserver.com/webirc/websocket/" [(ngModel)]="ircGateway" [disabled]="withWebSocket"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Gateway server port</ion-label>
+        <ion-input placeholder="443" type="number" [(ngModel)]="ircGatewayPort" [disabled]="withWebSocket"></ion-input>
+      </ion-item>
+    </ion-list>
+</ion-content>

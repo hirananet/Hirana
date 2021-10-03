@@ -1,3 +1,4 @@
+import { CoreService } from './../core/core.service';
 import { ServerService } from 'ircore';
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../environment';
@@ -9,12 +10,14 @@ import { environment } from '../environment';
 })
 export class ConfigsPage implements OnInit {
 
-  private nick: string;
+  public nick: string;
+  public serverName: string;
 
-  constructor(private srvSrv: ServerService) { }
+  constructor(private srvSrv: ServerService, private cSrv: CoreService) { }
 
   ionViewWillEnter(){
     this.nick = this.srvSrv.getCurrentNick(environment.defaultServerID);
+    this.serverName = this.cSrv.getServerName();
   }
 
   ngOnInit() {

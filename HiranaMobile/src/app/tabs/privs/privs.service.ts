@@ -9,9 +9,11 @@ export class PrivService {
   private privList: PrivChatData[] = [];
 
   constructor(private readonly privSrv: PrivsService) {
+    this.loadPrivs();
     privSrv.notifications.subscribe(r => {
       if(r.type === 'new-priv') {
         this.privList.push(new PrivChatData(r.parsedObject.chatName));
+        this.saveChannels();
       }
       if(r.type === 'message') {
         const chat = this.getChat(r.parsedObject.author);
@@ -28,6 +30,17 @@ export class PrivService {
 
   public getPrivs() {
     return this.privList;
+  }
+
+  public saveChannels() {
+    localStorage.setItem('hm_privs', JSON.stringify(this.privList));
+  }
+
+  public loadPrivs() {
+    const privs = JSON.parse(localStorage.getItem('hm_privs'));
+    if(privs) {
+      this.privList = privs;
+    }
   }
 
 }

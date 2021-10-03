@@ -38,16 +38,20 @@ export class LoginPage implements OnInit {
       return;
     }
     const srvData = new ServerData();
-    srvData.ircServer = 'magikus.hirana.net';
-    srvData.ircPort = 80;
+    srvData.ircServer = 'irc.hirana.net';
+    srvData.ircPort = 443;
     srvData.user.nick = this.nick;
     srvData.user.altNick = this.nick+'_';
     srvData.withWebSocket = true;
-    srvData.withSSL = false;
+    srvData.withSSL = true;
     srvData.serverID = environment.defaultServerID;
     localStorage.setItem('hm_lastNick', srvData.user.nick);
     this.saveConnection(srvData);
     this.doConnection(srvData);
+  }
+
+  fullLogin() {
+    this.navCtrl.navigateForward('/full-login');
   }
 
   doConnection(srvData) {

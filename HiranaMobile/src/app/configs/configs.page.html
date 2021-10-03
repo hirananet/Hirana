@@ -16,14 +16,34 @@
     </ion-list-header>
     <ion-item>
       <ion-label>Nick</ion-label>
-      <ion-input placeholder="placeholder" [(ngModel)]="nick"></ion-input>
+      <ion-input placeholder="placeholder" [(ngModel)]="nick" [disabled]="true"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Avatar</ion-label>
-      <ion-button expand="full" (click)="openPopupFile()">
+      <ion-button expand="full" (click)="openPopupFile()" [disabled]="true">
         <ion-label slot="end">Seleccionar imagen</ion-label>
         <input type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg">
       </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">Version</ion-label>
+      <ion-label slot="end">Alpha</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">Codename</ion-label>
+      <ion-label slot="end">Moon Wish</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">IRCore Version</ion-label>
+      <ion-label slot="end">3</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">Author</ion-label>
+      <ion-label slot="end">Hirana.net</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">Server</ion-label>
+      <ion-label>{{serverName}}</ion-label>
     </ion-item>
   </ion-list>
   <footer>

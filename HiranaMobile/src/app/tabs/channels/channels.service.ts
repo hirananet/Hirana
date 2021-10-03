@@ -11,7 +11,6 @@ export class ChanServ {
 
   constructor(private chanServ: ChannelsService, private servSrv: ServerService) {
     chanServ.notifications.subscribe(d => {
-      console.log('Chan Notify: ', d);
       if(d.type == 'new-channel') {
         const chnl: Channel = d.parsedObject.channel;
         if(!this.channelList.find(chanData => chanData.name == chnl.name)) {

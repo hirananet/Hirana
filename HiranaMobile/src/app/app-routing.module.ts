@@ -37,6 +37,10 @@ const routes: Routes = [
     loadChildren: () => import('./configs/configs.module').then( m => m.ConfigsPageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'full-login',
+    loadChildren: () => import('./full-login/full-login.module').then( m => m.FullLoginPageModule)
+  },
 ];
 
 @NgModule({
