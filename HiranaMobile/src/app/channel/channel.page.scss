@@ -29,6 +29,13 @@
       border-radius: 10px;
       border: 1px solid #00000082;
       .avatar {
+        width: 15vw;
+        height: 15vw;
+        justify-content: center;
+        align-items: center;
+        display: inline-flex;
+        background: #b0f0b5;
+        border-radius: 5px;
         img {
           max-width: 15vw;
           max-height: 15vw;

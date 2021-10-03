@@ -1,4 +1,4 @@
-import { PrivsService, PrivChat } from 'ircore';
+import { PrivsService, PrivChat, ChannelsService, ServerService } from 'ircore';
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../environment';
 import { ActivatedRoute } from '@angular/router';
@@ -15,6 +15,7 @@ export class PrivatePage implements OnInit {
   public chat: PrivChat;
 
   constructor(private readonly privSrv: PrivsService,
+              private readonly srvSrv: ServerService,
               private route: ActivatedRoute) { }
 
   ionViewWillEnter(){
@@ -26,7 +27,10 @@ export class PrivatePage implements OnInit {
   }
 
   kp(evt) {
-
+    if(evt.charCode==13) {
+      this.srvSrv.sendPrivMSG(environment.defaultServerID, this.privName, this.message);
+      this.message = '';
+    }
   }
 
 }

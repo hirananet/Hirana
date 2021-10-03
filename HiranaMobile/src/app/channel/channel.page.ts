@@ -36,7 +36,7 @@ export class ChannelPage implements OnInit {
 
   kp(evt) {
     if(evt.charCode==13) {
-      this.serverSrv.sendTo(environment.defaultServerID, this.channelHash, this.message);
+      this.serverSrv.sendChannelMSG(environment.defaultServerID, this.channelHash, this.message);
       this.message = '';
     }
   }
