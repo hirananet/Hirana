@@ -1,3 +1,4 @@
+import { BadgesModule } from './../components/badges/badges.module';
 import { UsersPage } from './users/users.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -14,7 +15,8 @@ import { ChannelPage } from './channel.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ChannelPageRoutingModule
+    ChannelPageRoutingModule,
+    BadgesModule
   ],
   declarations: [ChannelPage, UsersPage]
 })

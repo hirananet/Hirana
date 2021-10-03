@@ -1,6 +1,6 @@
 import { Channel } from 'ircore';
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-users',
@@ -11,13 +11,17 @@ export class UsersPage implements OnInit {
 
   @Input() channel: Channel;
 
-  constructor(private readonly modalCtrl: ModalController) { }
+  constructor(private readonly modalCtrl: ModalController, private navCtrl: NavController) { }
 
   ngOnInit() {
   }
 
   dismissModal() {
     this.modalCtrl.dismiss();
+  }
+
+  openPriv(nick: string) {
+    this.navCtrl.navigateForward(`/private#${nick}`)
   }
 
 }
