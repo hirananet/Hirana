@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
     <ion-title>Server configuration</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -66,4 +69,7 @@
         <ion-input placeholder="443" type="number" [(ngModel)]="ircGatewayPort" [disabled]="withWebSocket"></ion-input>
       </ion-item>
     </ion-list>
+    <ion-button expand="full" (click)="connect()">
+      Connect
+    </ion-button>
 </ion-content>
