@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Configuraciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full" class="ion-no-margin">
+    <ion-list-header lines="full">
+      <ion-label>
+        Cuenta
+      </ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Nick</ion-label>
+      <ion-input placeholder="placeholder"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Avatar</ion-label>
+      <ion-button expand="full" (click)="openPopupFile()">
+        <ion-label slot="end">Seleccionar imagen</ion-label>
+        <input type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg">
+      </ion-button>
+    </ion-item>
+  </ion-list>
+  <footer>
+    <ion-button expand="full" color="danger">
+      <ion-icon slot="start" icon="log-out-sharp"></ion-icon>
+      Desloguear
+    </ion-button>
+  </footer>
+</ion-content>

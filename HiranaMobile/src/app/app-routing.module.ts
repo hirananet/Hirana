@@ -32,6 +32,11 @@ const routes: Routes = [
     loadChildren: () => import('./private/private.module').then( m => m.PrivatePageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'configs',
+    loadChildren: () => import('./configs/configs.module').then( m => m.ConfigsPageModule),
+    // canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({
