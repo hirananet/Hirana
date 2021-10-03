@@ -9,8 +9,8 @@
 
 <ion-content>
   <ul>
-    <div *ngFor="let user of channel.users">
+    <li *ngFor="let user of channel.users">
       {{user.fullNick.nick}}@{{user.fullNick.origin}}
-    </div>
+    </li>
   </ul>
 </ion-content>

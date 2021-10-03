@@ -3,33 +3,29 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{channelHash}}</ion-title>
-    <ion-buttons slot="end">
-      <ion-button color="primary" (click)="openUsers()">
-        <ion-icon slot="icon-only" icon="people-circle-sharp"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+    <ion-title>{{privName}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="container">
-    <div class="topico" *ngIf="channel.topic">{{channel.topic}}</div>
-    <div class="content">
-      <div class="bubble" *ngFor="let msg of channel.messages">
-        <div class="avatar" (click)="openPriv(msg.author)">
+    <div class="content" *ngIf="chat">
+      <div class="bubble" *ngFor="let msg of chat.messages">
+        <div class="avatar">
           <img [src]="'https://thira.tandilserver.com/avatar?usr='+msg.author" />
         </div>
         <div class="body">
           <header>
-            <span class="name" (click)="openPriv(msg.author)">{{msg.author}}</span>
-            <!-- <span class="date">{{msg.date}}</span> -->
+            <span class="name">{{msg.author}}</span>
           </header>
           <section>
             {{msg.content}}
           </section>
         </div>
       </div>
+    </div>
+    <div class="content" *ngIf="!chat">
+      No hay mensajes
     </div>
     <div class="inputBox">
       <input type="text" placeholder="Mensaje" [(ngModel)]="message" (keypress)="kp($event)"/>

@@ -27,6 +27,11 @@ const routes: Routes = [
     loadChildren: () => import('./channel/channel.module').then( m => m.ChannelPageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'private',
+    loadChildren: () => import('./private/private.module').then( m => m.PrivatePageModule),
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({

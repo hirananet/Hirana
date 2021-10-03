@@ -1,0 +1,16 @@
+.placeholder {
+  text-align: center;
+  ion-icon {
+    color: var(--color);
+  }
+  .btnMock {
+    background-color: var(--ion-color-primary, #3880ff);
+    display: inline-block;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    color: var(--ion-color-primary-contrast, #fff);
+  }
+}

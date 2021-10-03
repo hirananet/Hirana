@@ -2,7 +2,7 @@ import { UsersPage } from './users/users.page';
 import { environment } from './../environment';
 import { Channel, ChannelsService, ServerService } from 'ircore';
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-channel',
@@ -15,7 +15,7 @@ export class ChannelPage implements OnInit {
   public channel: Channel = new Channel('');
   public message: string;
 
-  constructor(private chanServ: ChannelsService, private serverSrv: ServerService, public modalController: ModalController) { }
+  constructor(private chanServ: ChannelsService, private serverSrv: ServerService, public modalController: ModalController, private navCtrl: NavController) { }
 
   ngOnInit() {
   }
@@ -23,6 +23,10 @@ export class ChannelPage implements OnInit {
   ionViewWillEnter(){
     this.channelHash = window.location.hash;
     this.channel = this.chanServ.getChannel(environment.defaultServerID, new Channel(this.channelHash));
+  }
+
+  openPriv(nick: string) {
+    this.navCtrl.navigateForward(`/private#${nick}`)
   }
 
   kp(evt) {

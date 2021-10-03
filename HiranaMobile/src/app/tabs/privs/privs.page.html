@@ -1,3 +1,27 @@
 <ion-content>
+  <ion-searchbar placeholder="Privado"></ion-searchbar>
+  <ion-list *ngIf="privs && privs.length > 0">
+    <ion-list-header>
+      Chats privados
+    </ion-list-header>
+
+    <ion-item-sliding *ngFor="let privChat of privs">
+      <ion-item (click)="openChat(privChat.name)" lines="none" class="ion-activatable ripple-parent">
+        <ion-icon slot="start" name="chatbubbles-sharp"></ion-icon>
+        <ion-label>{{privChat.name}}</ion-label>
+        <ion-ripple-effect></ion-ripple-effect>
+      </ion-item>
+      <ion-item-options side="end" (click)="removeChat(privChat.name)">
+        <ion-item-option color="danger">Close</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <div class="placeholder" *ngIf="!this.privs || this.privs.length == 0">
+    <img src="assets/b612.png"/>
+    <h4>No tienes chats privados!</h4>
+    <p>
+      Clickea un nick de un miembro de un canal para abrir un privado.
+    </p>
+  </div>
 
 </ion-content>

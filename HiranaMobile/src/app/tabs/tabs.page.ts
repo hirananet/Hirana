@@ -1,3 +1,5 @@
+import { ChannelsService } from 'ircore';
+import { PrivService } from './privs/privs.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsPage implements OnInit {
 
-  constructor() { }
+  constructor(private readonly privSrv: PrivService, private readonly chanServ: ChannelsService) { }
 
   ngOnInit() {
   }

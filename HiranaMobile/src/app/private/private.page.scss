@@ -1,0 +1,62 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .content {
+    height: 100%;
+    background: url('../../assets/pattern.svg');
+    background-color: #c4d9de;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    .bubble {
+      display: flex;
+      margin: 2px 5px;
+      background: #abeaf5c7;
+      padding: 5px;
+      border-radius: 10px;
+      border: 1px solid #00000082;
+      .avatar {
+        img {
+          max-width: 15vw;
+          max-height: 15vw;
+        }
+      }
+      .body {
+        width: 100%;
+        margin-left: 5px;
+        header {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          .name {
+            color: #003502;
+            font-weight: bold;
+          }
+          .date {
+            margin-right: 5px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #000000d6;
+          }
+        }
+        section {
+          font-size: 19px;
+        }
+      }
+    }
+  }
+  .inputBox {
+    padding: 5px;
+    background: white;
+    border-top: 1px solid var(--ion-border-color, #cccccc);
+    input {
+      width: 100%;
+      border: none;
+      padding: 5px 0px;
+      outline: none;
+    }
+  }
+}
