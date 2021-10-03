@@ -35,7 +35,7 @@ const routes: Routes = [
   {
     path: 'configs',
     loadChildren: () => import('./configs/configs.module').then( m => m.ConfigsPageModule),
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
 ];
 

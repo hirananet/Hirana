@@ -16,7 +16,7 @@
     </ion-list-header>
     <ion-item>
       <ion-label>Nick</ion-label>
-      <ion-input placeholder="placeholder"></ion-input>
+      <ion-input placeholder="placeholder" [(ngModel)]="nick"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Avatar</ion-label>
@@ -27,7 +27,7 @@
     </ion-item>
   </ion-list>
   <footer>
-    <ion-button expand="full" color="danger">
+    <ion-button expand="full" color="danger" (click)="logout()">
       <ion-icon slot="start" icon="log-out-sharp"></ion-icon>
       Desloguear
     </ion-button>
