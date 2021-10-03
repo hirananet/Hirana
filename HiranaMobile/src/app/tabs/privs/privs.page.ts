@@ -18,7 +18,7 @@ export class PrivsPage implements OnInit {
   }
 
   openChat(chat: string) {
-    this.navCtrl.navigateForward(`/private#${chat}`)
+    this.navCtrl.navigateForward(`/private/${chat}`)
   }
 
   removeChat(chat: string) {

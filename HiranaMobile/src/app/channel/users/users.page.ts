@@ -22,7 +22,7 @@ export class UsersPage implements OnInit {
 
   openPriv(nick: string) {
     this.modalCtrl.dismiss();
-    this.navCtrl.navigateForward(`/private#${nick}`)
+    this.navCtrl.navigateForward(`/private/${nick}`)
   }
 
 }

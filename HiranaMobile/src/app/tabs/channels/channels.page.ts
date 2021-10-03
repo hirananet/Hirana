@@ -18,7 +18,7 @@ export class ChannelsPage implements OnInit {
   }
 
   public openChannel(chan: string) {
-    this.navCtrl.navigateForward(`/channel#${chan}`)
+    this.navCtrl.navigateForward(`/channel/${chan}`)
   }
 
   public leave(chan: string) {

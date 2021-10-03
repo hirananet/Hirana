@@ -23,12 +23,12 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'channel',
+    path: 'channel/:chanName',
     loadChildren: () => import('./channel/channel.module').then( m => m.ChannelPageModule),
     canActivate: [AuthGuard]
   },
   {
-    path: 'private',
+    path: 'private/:privName',
     loadChildren: () => import('./private/private.module').then( m => m.PrivatePageModule),
     canActivate: [AuthGuard]
   },

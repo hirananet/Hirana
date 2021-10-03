@@ -1,6 +1,7 @@
 import { PrivsService, PrivChat } from 'ircore';
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../environment';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-private',
@@ -13,11 +14,11 @@ export class PrivatePage implements OnInit {
   public privName: string;
   public chat: PrivChat;
 
-  constructor(private readonly privSrv: PrivsService) { }
+  constructor(private readonly privSrv: PrivsService,
+              private route: ActivatedRoute) { }
 
   ionViewWillEnter(){
-    this.privName = window.location.hash.substr(1);
-    console.log(this.privName);
+    this.privName = this.route.snapshot.paramMap.get('privName');
     this.chat = this.privSrv.getChat(environment.defaultServerID, this.privName);
   }
 

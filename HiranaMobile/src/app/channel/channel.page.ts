@@ -3,6 +3,7 @@ import { environment } from './../environment';
 import { Channel, ChannelsService, ServerService } from 'ircore';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-channel',
@@ -15,18 +16,22 @@ export class ChannelPage implements OnInit {
   public channel: Channel = new Channel('');
   public message: string;
 
-  constructor(private chanServ: ChannelsService, private serverSrv: ServerService, public modalController: ModalController, private navCtrl: NavController) { }
+  constructor(private chanServ: ChannelsService,
+              private serverSrv: ServerService,
+              public modalController: ModalController,
+              private navCtrl: NavController,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
   ionViewWillEnter(){
-    this.channelHash = window.location.hash;
+    this.channelHash = '#' + this.route.snapshot.paramMap.get('chanName');
     this.channel = this.chanServ.getChannel(environment.defaultServerID, new Channel(this.channelHash));
   }
 
   openPriv(nick: string) {
-    this.navCtrl.navigateForward(`/private#${nick}`)
+    this.navCtrl.navigateForward(`/private/${nick}`)
   }
 
   kp(evt) {
