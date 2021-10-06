@@ -9,7 +9,6 @@
       <ion-item (click)="openChannel(channel.name)" lines="none" class="ion-activatable ripple-parent">
         <ion-icon slot="start" name="chatbubbles-sharp"></ion-icon>
         <ion-label>{{channel.name}}</ion-label>
-        <ion-ripple-effect></ion-ripple-effect>
       </ion-item>
       <ion-item-options side="end" (click)="leave(channel.name)">
         <ion-item-option color="danger">Leave</ion-item-option>

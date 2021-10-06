@@ -1,5 +1,4 @@
 import { BadgesModule } from './../components/badges/badges.module';
-import { UsersPage } from './users/users.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +17,6 @@ import { ChannelPage } from './channel.page';
     ChannelPageRoutingModule,
     BadgesModule
   ],
-  declarations: [ChannelPage, UsersPage]
+  declarations: [ChannelPage]
 })
 export class ChannelPageModule {}

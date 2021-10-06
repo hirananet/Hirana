@@ -12,6 +12,27 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-menu side="end" menuId="users" contentId="menu" class="my-custom-menu">
+  <ion-header>
+    <ion-toolbar color="tertiary">
+      <ion-title>User list</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let user of channel.users" class="ion-activatable ripple-parent" (click)="openPriv(user.fullNick.nick)">
+        <ion-avatar slot="start">
+          <img [src]="'https://thira.tandilserver.com/avatar?usr='+user.fullNick.nick" />
+        </ion-avatar>
+        <ion-label>{{user.fullNick.nick}}<span *ngIf="user.fullNick.origin">@{{user.fullNick.origin}}</span></ion-label>
+        <ion-note slot="end" *ngIf="user.chanModes && user.chanModes[channel.name]">
+          <app-badges [channelModes]="user.chanModes[channel.name]"></app-badges>
+        </ion-note>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
 <ion-content>
   <div class="container">
     <div class="topico" *ngIf="channel.topic">{{channel.topic}}</div>
@@ -36,3 +57,4 @@
     </div>
   </div>
 </ion-content>
+<ion-router-outlet id="menu"></ion-router-outlet>

@@ -1,8 +1,7 @@
-import { UsersPage } from './users/users.page';
 import { environment } from './../environment';
 import { Channel, ChannelsService, ServerService } from 'ircore';
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -18,9 +17,9 @@ export class ChannelPage implements OnInit {
 
   constructor(private chanServ: ChannelsService,
               private serverSrv: ServerService,
-              public modalController: ModalController,
               private navCtrl: NavController,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private menu: MenuController) { }
 
   ngOnInit() {
   }
@@ -42,13 +41,15 @@ export class ChannelPage implements OnInit {
   }
 
   async openUsers() {
-    const modal = await this.modalController.create({
-      component: UsersPage,
-      componentProps: {
-        channel: this.channel
-      }
-    });
-    return await modal.present();
+    // const modal = await this.modalController.create({
+    //   component: UsersPage,
+    //   componentProps: {
+    //     channel: this.channel
+    //   }
+    // });
+    // return await modal.present();
+    this.menu.enable(true, 'users');
+    this.menu.open('users');
   }
 
 }
