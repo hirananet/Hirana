@@ -25,7 +25,12 @@
       </div>
     </div>
     <div class="content" *ngIf="!chat || chat.messages.length == 0">
-      {{'NO_MESSAGES' | translate}}
+      <div class="placeholder" *ngIf="!this.channels || this.channels.length == 0">
+        <img src="assets/b612.png" (click)="debug()"/>
+        <h4>
+          {{'NO_MESSAGES' | translate}}
+        </h4>
+      </div>
     </div>
     <div class="inputBox">
       <input type="text" [placeholder]="'MESSAGE' | translate" [(ngModel)]="message" (keypress)="kp($event)"/>

@@ -4,7 +4,9 @@
     "TITLE": "Privados",
     "NO_DM": "No tienes chats privados!",
     "OPEN_DM": "Clickea un nick de un miembro de un canal para abrir un privado.",
-    "CLOSE": "Cerrar"
+    "CLOSE": "Cerrar",
+    "OPEN": "Abrir privado",
+    "OPEN_D": "Escribe el nick del usuario"
   },
   "CHANNELS": {
     "TITLE": "Canales",

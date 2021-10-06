@@ -55,6 +55,24 @@
       }
     }
   }
+  .placeholder {
+    text-align: center;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 50vw;
+    }
+    h4 {
+      display: inherit;
+      padding: 5px;
+      border-radius: 5px;
+      background: #ffffffb5;
+      box-shadow: 0px 0px 5px black;
+    }
+  }
   .inputBox {
     padding: 5px;
     background: white;

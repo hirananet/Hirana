@@ -4,7 +4,9 @@
     "TITLE": "Directs",
     "NO_DM": "You haven't direct messages!",
     "OPEN_DM": "Click in nick of a member of a channel to start a direct-message chat",
-    "CLOSE": "Close"
+    "CLOSE": "Close",
+    "OPEN": "Open direct message",
+    "OPEN_D": "Write the nick of user"
   },
   "CHANNELS": {
     "TITLE": "Channels",
