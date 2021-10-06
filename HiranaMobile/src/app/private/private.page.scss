@@ -11,6 +11,23 @@
     justify-content: flex-end;
     overflow-y: scroll;
     overflow-x: hidden;
+    ion-list {
+      --background: transparent;
+      background-color: transparent;
+      ion-item {
+        --background: transparent;
+        background-color: #ffffffe0;
+        border-radius: 10px;
+        margin: 10px;
+        header {
+          font-weight: bold;
+          color: #181918;
+        }
+        section {
+          white-space: initial;
+        }
+      }
+    }
     .bubble {
       display: flex;
       margin: 2px 5px;

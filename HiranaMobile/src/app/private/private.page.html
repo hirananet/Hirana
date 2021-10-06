@@ -9,20 +9,22 @@
 
 <ion-content>
   <div class="container">
-    <div class="content" *ngIf="chat">
-      <div class="bubble" *ngFor="let msg of chat.messages">
-        <div class="avatar">
-          <img [src]="'https://thira.tandilserver.com/avatar?usr='+msg.author" />
-        </div>
-        <div class="body">
-          <header>
-            <span class="name">{{msg.author}}</span>
-          </header>
-          <section>
-            {{msg.content}}
-          </section>
-        </div>
-      </div>
+    <div class="content">
+      <ion-list *ngIf="chat">
+        <ion-item *ngFor="let msg of chat.messages" class="ion-activatable ripple-parent">
+          <ion-avatar slot="start">
+            <img [src]="'https://thira.tandilserver.com/avatar?usr='+msg.author" />
+          </ion-avatar>
+          <ion-label>
+            <header>
+              <span class="name">{{msg.author}}</span>
+            </header>
+            <section>
+              {{msg.content}}
+            </section>
+          </ion-label>
+        </ion-item>
+      </ion-list>
     </div>
     <div class="content" *ngIf="!chat || chat.messages.length == 0">
       <div class="placeholder" *ngIf="!this.channels || this.channels.length == 0">
