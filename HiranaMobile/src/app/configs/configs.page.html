@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Configuraciones</ion-title>
+    <ion-title>{{'CONFIGS.TITLE' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,49 +11,49 @@
   <ion-list lines="full" class="ion-no-margin">
     <ion-list-header lines="full">
       <ion-label>
-        Cuenta
+        {{'CONFIGS.ACCOUNT' | translate}}
       </ion-label>
     </ion-list-header>
     <ion-item>
-      <ion-label>Nick</ion-label>
-      <ion-input placeholder="placeholder" [(ngModel)]="nick" [disabled]="true"></ion-input>
+      <ion-label>{{'CONFIGS.NICK' | translate}}</ion-label>
+      <ion-input [(ngModel)]="nick" [disabled]="true"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Avatar</ion-label>
+      <ion-label>{{'CONFIGS.AVATAR' | translate}}</ion-label>
       <ion-button expand="full" (click)="openPopupFile()" [disabled]="true">
-        <ion-label slot="end">Seleccionar imagen</ion-label>
+        <ion-label slot="end">{{'CONFIGS.SELECT_AVATAR' | translate}}</ion-label>
         <input type="file" (change)="loadImageFromDevice($event)" id="file-input" accept="image/png, image/jpeg">
       </ion-button>
     </ion-item>
     <ion-item>
-      <ion-label slot="start">Version</ion-label>
-      <ion-label slot="end">Alpha</ion-label>
+      <ion-label slot="start">{{'CONFIGS.VERSION' | translate}}</ion-label>
+      <ion-label slot="end">0.0.1</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label slot="start">Codename</ion-label>
+      <ion-label slot="start">{{'CONFIGS.CODENAME' | translate}}</ion-label>
       <ion-label slot="end">Moon Wish</ion-label>
     </ion-item>
     <ion-item>
       <ion-label slot="start">IRCore Version</ion-label>
-      <ion-label slot="end">3</ion-label>
+      <ion-label slot="end">V3</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label slot="start">Author</ion-label>
+      <ion-label slot="start">{{'CONFIGS.AUTHOR' | translate}}</ion-label>
       <ion-label slot="end">Hirana.net</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label slot="start">Server</ion-label>
+      <ion-label slot="start">{{'CONFIGS.SERVER' | translate}}</ion-label>
       <ion-label>{{serverName}}</ion-label>
     </ion-item>
   </ion-list>
   <footer>
     <ion-button expand="full" color="danger" (click)="wipe()">
       <ion-icon slot="start" icon="trash-sharp"></ion-icon>
-      Wipe data
+      {{'CONFIGS.WIPE' | translate}}
     </ion-button>
     <ion-button expand="full" color="warning" (click)="logout()">
       <ion-icon slot="start" icon="log-out-sharp"></ion-icon>
-      Logout
+      {{'CONFIGS.LOGOUT' | translate}}
     </ion-button>
   </footer>
 </ion-content>

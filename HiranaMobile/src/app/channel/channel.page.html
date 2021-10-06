@@ -5,60 +5,59 @@
     </ion-buttons>
     <ion-title>{{channelHash}}</ion-title>
     <ion-buttons slot="end">
-      <ion-button color="primary" (click)="openUsers()">
+      <ion-button color="primary" (click)="openUsers()" class="hide-ipad">
         <ion-icon slot="icon-only" icon="people-circle-sharp"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-
 <ion-content>
-  <div class="container">
-    <div class="topico" *ngIf="channel.topic">{{channel.topic}}</div>
-    <div class="content">
-      <div class="bubble" *ngFor="let msg of channel.messages">
-        <div class="avatar" (click)="openPriv(msg.author)">
-          <img [src]="'https://thira.tandilserver.com/avatar?usr='+msg.author" />
+  <ion-split-pane contentId="main-content">
+    <ion-menu side="end" menuId="users" contentId="main-content" class="my-custom-menu">
+      <ion-header>
+        <ion-toolbar color="tertiary">
+          <ion-title>{{'CHANNELS.U_LIST' | translate}}</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item *ngFor="let user of channel.users" class="ion-activatable ripple-parent" (click)="openPriv(user.fullNick.nick)">
+            <ion-avatar slot="start">
+              <img [src]="'https://thira.tandilserver.com/avatar?usr='+user.fullNick.nick" />
+            </ion-avatar>
+            <ion-label>{{user.fullNick.nick}}<span *ngIf="user.fullNick.origin">@{{user.fullNick.origin}}</span></ion-label>
+            <ion-note slot="end" *ngIf="user.chanModes && user.chanModes[channel.name]">
+              <app-badges [channelModes]="user.chanModes[channel.name]"></app-badges>
+            </ion-note>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-content id="main-content">
+      <div class="container">
+        <div class="topico" *ngIf="channel.topic">{{channel.topic}}</div>
+        <div class="content">
+          <ion-list lines="none">
+            <ion-item *ngFor="let msg of channel.messages" class="ion-activatable ripple-parent" (click)="openPriv(msg.author)">
+              <ion-avatar slot="start">
+                <img [src]="'https://thira.tandilserver.com/avatar?usr='+msg.author" />
+              </ion-avatar>
+              <ion-label>
+                <header>
+                  <span class="name" (click)="openPriv(msg.author)">{{msg.author}}</span>
+                  <!-- <span class="date">{{msg.date}}</span> -->
+                </header>
+                <section>
+                  {{msg.content}}
+                </section>
+              </ion-label>
+            </ion-item>
+          </ion-list>
         </div>
-        <div class="body">
-          <header>
-            <span class="name" (click)="openPriv(msg.author)">{{msg.author}}</span>
-            <!-- <span class="date">{{msg.date}}</span> -->
-          </header>
-          <section>
-            {{msg.content}}
-          </section>
+        <div class="inputBox">
+          <input type="text" [placeholder]="'MESSAGE' | translate" [(ngModel)]="message" (keypress)="kp($event)"/>
         </div>
       </div>
-    </div>
-    <div class="inputBox">
-      <input type="text" [placeholder]="'MESSAGE' | translate" [(ngModel)]="message" (keypress)="kp($event)"/>
-    </div>
-  </div>
-</ion-content>
-
-<ion-split-pane contentId="menu">
-  <ion-menu side="end" menuId="users" contentId="menu" class="my-custom-menu">
-    <ion-header>
-      <ion-toolbar color="tertiary">
-        <ion-title>{{'CHANNELS.U_LIST' | translate}}</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-item *ngFor="let user of channel.users" class="ion-activatable ripple-parent" (click)="openPriv(user.fullNick.nick)">
-          <ion-avatar slot="start">
-            <img [src]="'https://thira.tandilserver.com/avatar?usr='+user.fullNick.nick" />
-          </ion-avatar>
-          <ion-label>{{user.fullNick.nick}}<span *ngIf="user.fullNick.origin">@{{user.fullNick.origin}}</span></ion-label>
-          <ion-note slot="end" *ngIf="user.chanModes && user.chanModes[channel.name]">
-            <app-badges [channelModes]="user.chanModes[channel.name]"></app-badges>
-          </ion-note>
-        </ion-item>
-      </ion-list>
     </ion-content>
-  </ion-menu>
-  <ion-router-outlet id="menu"></ion-router-outlet>
-</ion-split-pane>
-
+  </ion-split-pane>
+</ion-content>

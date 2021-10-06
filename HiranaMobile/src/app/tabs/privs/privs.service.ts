@@ -13,8 +13,10 @@ export class PrivService {
     this.loadPrivs();
     privSrv.notifications.subscribe(r => {
       if(r.type === 'new-priv') {
-        this.privList.push(new PrivChatData(r.parsedObject.chatName));
-        this.saveChannels();
+        if(!this.privList.find(p => p.name == r.parsedObject.chatName)) {
+          this.privList.push(new PrivChatData(r.parsedObject.chatName));
+          this.saveChannels();
+        }
       }
       if(r.type === 'message') {
         const chat = this.getChat(r.parsedObject.author);

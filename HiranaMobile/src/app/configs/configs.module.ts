@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,10 @@ import { ConfigsPage } from './configs.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ConfigsPageRoutingModule
+    ConfigsPageRoutingModule,
+    TranslateModule.forChild({
+      extend: true
+    })
   ],
   declarations: [ConfigsPage]
 })

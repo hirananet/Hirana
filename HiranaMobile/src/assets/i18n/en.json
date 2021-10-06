@@ -19,6 +19,19 @@
   "LIST": {
     "TITLE": "Ch List"
   },
+  "CONFIGS": {
+    "TITLE": "Configurations",
+    "ACCOUNT": "Account",
+    "NICK": "Nick",
+    "AVATAR": "Avatar",
+    "SELECT_AVATAR": "Select image",
+    "VERSION": "Version",
+    "CODENAME": "Codename",
+    "AUTHOR": "Author",
+    "SERVER": "Server",
+    "WIPE": "Wipe data",
+    "LOGOUT": "Logout"
+  },
   "MESSAGE": "Your message here.",
   "NO_MESSAGES": "No messages.",
   "OK": "Ok",

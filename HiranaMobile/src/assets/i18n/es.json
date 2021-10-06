@@ -19,6 +19,19 @@
   "LIST": {
     "TITLE": "Lista"
   },
+  "CONFIGS": {
+    "TITLE": "Configuraciones",
+    "ACCOUNT": "Cuenta",
+    "NICK": "Nick",
+    "AVATAR": "Avatar",
+    "SELECT_AVATAR": "Seleccionar imagen",
+    "VERSION": "Version",
+    "CODENAME": "Nombre Clave",
+    "AUTHOR": "Autor",
+    "SERVER": "Servidor",
+    "WIPE": "Borrar datos",
+    "LOGOUT": "Desconectar"
+  },
   "MESSAGE": "Tu mensaje aquí.",
   "NO_MESSAGES": "No hay mensajes",
   "OK": "Ok",
