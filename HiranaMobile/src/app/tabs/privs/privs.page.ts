@@ -1,6 +1,7 @@
 import { PrivService, PrivChatData } from './privs.service';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { environment } from 'src/app/environment';
 
 @Component({
   selector: 'app-privs',
@@ -22,7 +23,7 @@ export class PrivsPage implements OnInit {
   }
 
   removeChat(chat: string) {
-
+    this.privSrv.removePriv(chat);
   }
 
 }

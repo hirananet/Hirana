@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,10 @@ import { PrivsPage } from './privs.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    PrivsPageRoutingModule
+    PrivsPageRoutingModule,
+    TranslateModule.forChild({
+      extend: true
+    })
   ],
   declarations: [PrivsPage]
 })

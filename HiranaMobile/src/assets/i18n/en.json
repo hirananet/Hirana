@@ -1,0 +1,26 @@
+{
+  "TEST": "test",
+  "PRIVATES": {
+    "TITLE": "Directs",
+    "NO_DM": "You haven't direct messages!",
+    "OPEN_DM": "Click in nick of a member of a channel to start a direct-message chat",
+    "CLOSE": "Close"
+  },
+  "CHANNELS": {
+    "TITLE": "Channels",
+    "NO_CHANS": "You aren't in channels!",
+    "JOIN_CHANS": "Join a channel with button",
+    "OR_LIST": "Or explore the channel list",
+    "LEAVE": "Leave",
+    "U_LIST": "Users list",
+    "NEW": "Join channel",
+    "NEW_D": "Add and join to a channel by name"
+  },
+  "LIST": {
+    "TITLE": "Ch List"
+  },
+  "MESSAGE": "Your message here.",
+  "NO_MESSAGES": "No messages.",
+  "OK": "Ok",
+  "CANCEL": "Cancel"
+}

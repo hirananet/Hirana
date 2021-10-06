@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { BadgesModule } from './../components/badges/badges.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,7 +16,10 @@ import { ChannelPage } from './channel.page';
     FormsModule,
     IonicModule,
     ChannelPageRoutingModule,
-    BadgesModule
+    BadgesModule,
+    TranslateModule.forChild({
+      extend: true
+    })
   ],
   declarations: [ChannelPage]
 })

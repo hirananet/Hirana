@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,10 @@ import { ChannelsPage } from './channels.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ChannelsPageRoutingModule
+    ChannelsPageRoutingModule,
+    TranslateModule.forChild({
+      extend: true
+    })
   ],
   declarations: [ChannelsPage]
 })

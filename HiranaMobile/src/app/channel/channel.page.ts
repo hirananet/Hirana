@@ -41,15 +41,7 @@ export class ChannelPage implements OnInit {
   }
 
   async openUsers() {
-    // const modal = await this.modalController.create({
-    //   component: UsersPage,
-    //   componentProps: {
-    //     channel: this.channel
-    //   }
-    // });
-    // return await modal.present();
-    this.menu.enable(true, 'users');
-    this.menu.open('users');
+    this.menu.toggle('users');
   }
 
 }

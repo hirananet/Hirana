@@ -24,11 +24,11 @@
         </div>
       </div>
     </div>
-    <div class="content" *ngIf="!chat">
-      No hay mensajes
+    <div class="content" *ngIf="!chat || chat.messages.length == 0">
+      {{'NO_MESSAGES' | translate}}
     </div>
     <div class="inputBox">
-      <input type="text" placeholder="Mensaje" [(ngModel)]="message" (keypress)="kp($event)"/>
+      <input type="text" [placeholder]="'MESSAGE' | translate" [(ngModel)]="message" (keypress)="kp($event)"/>
     </div>
   </div>
 </ion-content>

@@ -2,6 +2,7 @@ import { ChannelsService } from 'ircore';
 import { PrivService } from './privs/privs.service';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tabs',
@@ -10,7 +11,9 @@ import { NavController } from '@ionic/angular';
 })
 export class TabsPage implements OnInit {
 
-  constructor(private readonly privSrv: PrivService, private readonly chanServ: ChannelsService, private navCtrl: NavController) { }
+  constructor(private readonly privSrv: PrivService,
+              private readonly chanServ: ChannelsService,
+              private navCtrl: NavController) { }
 
   ngOnInit() {
   }

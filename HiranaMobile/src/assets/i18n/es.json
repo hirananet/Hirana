@@ -1,0 +1,26 @@
+{
+  "TEST": "prueba",
+  "PRIVATES": {
+    "TITLE": "Privados",
+    "NO_DM": "No tienes chats privados!",
+    "OPEN_DM": "Clickea un nick de un miembro de un canal para abrir un privado.",
+    "CLOSE": "Cerrar"
+  },
+  "CHANNELS": {
+    "TITLE": "Canales",
+    "NO_CHANS": "No tienes canales!",
+    "JOIN_CHANS": "Unete a un canal con el botón de",
+    "OR_LIST": "O explora la lista de canales",
+    "LEAVE": "Salir",
+    "U_LIST": "Lista de usuarios",
+    "NEW": "Nuevo canal",
+    "NEW_D": "Agrega y unirse a un canal por su nombre."
+  },
+  "LIST": {
+    "TITLE": "Lista"
+  },
+  "MESSAGE": "Tu mensaje aquí.",
+  "NO_MESSAGES": "No hay mensajes",
+  "OK": "Ok",
+  "CANCEL": "Cancelar"
+}

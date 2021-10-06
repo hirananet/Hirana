@@ -1,5 +1,6 @@
 import { PrivsService } from 'ircore';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/app/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,15 @@ export class PrivService {
 
   public saveChannels() {
     localStorage.setItem('hm_privs', JSON.stringify(this.privList));
+  }
+
+  public removePriv(chat: string) {
+    const privIdx = this.privList.findIndex(r => r.name == chat);
+    if(privIdx > -1) {
+      this.privSrv.removePriv(environment.defaultServerID, chat);
+      this.privList.splice(privIdx, 1);
+    }
+    this.saveChannels();
   }
 
   public loadPrivs() {

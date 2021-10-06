@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { ChanServ, ChannelData } from './channels.service';
 import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
@@ -11,7 +12,10 @@ export class ChannelsPage implements OnInit {
 
   public channels: ChannelData[];
 
-  constructor(private readonly chanServ: ChanServ, public alertController: AlertController, private navCtrl: NavController) { }
+  constructor(private readonly chanServ: ChanServ,
+              public alertController: AlertController,
+              private navCtrl: NavController,
+              private translateSrv: TranslateService) { }
 
   ngOnInit() {
     this.channels = this.chanServ.getChannelList()
@@ -33,8 +37,8 @@ export class ChannelsPage implements OnInit {
   async addServer() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Nuevo canal',
-      message: 'Agrega un canal por su nombre.',
+      header: this.translateSrv.instant('CHANNELS.NEW'),
+      message: this.translateSrv.instant('CHANNELS.NEW_D'),
       inputs: [
         {
           name: 'channelName',
@@ -42,8 +46,8 @@ export class ChannelsPage implements OnInit {
           placeholder: '#main'
         },
       ],
-      buttons: ['Cancelar', {
-        text: 'OK',
+      buttons: [this.translateSrv.instant('CANCEL'), {
+        text: this.translateSrv.instant('OK'),
         handler: (d) => {
           if(d.channelName) {
             this.chanServ.joinChannel(d.channelName);
