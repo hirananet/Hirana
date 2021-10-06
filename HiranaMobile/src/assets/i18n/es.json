@@ -32,7 +32,8 @@
     "AUTHOR": "Autor",
     "SERVER": "Servidor",
     "WIPE": "Borrar datos",
-    "LOGOUT": "Desconectar"
+    "LOGOUT": "Desconectar",
+    "CLIENT": "Cliente"
   },
   "MESSAGE": "Tu mensaje aquí.",
   "NO_MESSAGES": "No hay mensajes",
