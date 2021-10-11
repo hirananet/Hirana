@@ -30,7 +30,7 @@ export class PrivService {
 
   public setInPriv(name: string) {
     this.inPrivate = name;
-    this.getChat(name).clearNotifications();
+    this.getChat(name)?.clearNotifications();
   }
 
   public getChat(name: string) {

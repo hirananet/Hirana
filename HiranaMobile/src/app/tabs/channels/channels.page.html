@@ -3,8 +3,8 @@
   <ion-list *ngIf="this.channels && this.channels.length > 0">
     <ion-list-header>
       <ion-label>{{'CHANNELS.TITLE' | translate}}</ion-label>
-      <ion-button (click)="addServer()" *ngIf="!showFavs">
-        <ion-icon name="add-sharp"></ion-icon>
+      <ion-button (click)="addServer()" color="primary" *ngIf="!showFavs">
+        <ion-icon name="add-circle-sharp"></ion-icon>
       </ion-button>
     </ion-list-header>
 
@@ -14,7 +14,7 @@
         <ion-label>{{channel.name}}</ion-label>
         <ion-badge slot="end" color="primary" *ngIf="channel.notifications > 0">{{channel.notifications}}</ion-badge>
       </ion-item>
-      <ion-item-options side="end" (click)="leave(channel.name)">
+      <ion-item-options side="end" (click)="leave(channel.hash)">
         <ion-item-option color="danger">{{'CHANNELS.LEAVE' | translate}}</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>

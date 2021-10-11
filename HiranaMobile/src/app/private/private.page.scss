@@ -5,7 +5,6 @@
   .content {
     height: 100%;
     background: url('../../assets/pattern.svg');
-    background-color: #c4d9de;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -16,7 +15,7 @@
       background-color: transparent;
       ion-item {
         --background: transparent;
-        background-color: #ffffffe0;
+        background-color: var(--message-box);
         border-radius: 10px;
         margin: 10px;
         header {
@@ -92,13 +91,15 @@
   }
   .inputBox {
     padding: 5px;
-    background: white;
-    border-top: 1px solid var(--ion-border-color, #cccccc);
+    background: var(--ion-tab-bar-background);
+    border-top: 1px solid var(--ion-tab-bar-border-color);
     input {
       width: 100%;
       border: none;
       padding: 5px 0px;
       outline: none;
+      background: transparent;
+      color: var(--ion-tab-bar-color-selected);
     }
   }
 }

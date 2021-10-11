@@ -3,8 +3,8 @@
   <ion-list *ngIf="privs && privs.length > 0">
     <ion-list-header>
       <ion-label>{{'PRIVATES.TITLE' | translate}}</ion-label>
-      <ion-button (click)="newPriv()">
-        <ion-icon name="add-sharp"></ion-icon>
+      <ion-button type="block" (click)="newPriv()" color="primary">
+        <ion-icon name="add-circle-sharp"></ion-icon>
       </ion-button>
     </ion-list-header>
 

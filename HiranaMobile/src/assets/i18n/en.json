@@ -22,7 +22,8 @@
     "ANON_LOGIN": "Anonymous login",
     "LOGIN": "Login",
     "ACCOUNT_LOGIN": "Account login",
-    "PASSWORD": "Password"
+    "PASSWORD": "Password",
+    "OR": "Or..."
   },
   "PRIVATES": {
     "TITLE": "Directs",

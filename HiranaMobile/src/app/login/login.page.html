@@ -15,7 +15,7 @@
       <img src="assets/logo.png" class="logo"/>
     </div>
     <ion-list *ngIf="!landscape">
-      <ion-list-header lines="full">
+      <ion-list-header lines="none">
         <ion-label>
           {{ 'LOGIN.ANON_LOGIN' | translate }}
         </ion-label>
@@ -27,7 +27,8 @@
         </ion-item>
       </ion-item-group>
       <ion-button expand="block" (click)="simpleLogin()">{{ 'LOGIN.LOGIN' | translate }}</ion-button>
-      <ion-list-header lines="full">
+      <div class="hr"><span>{{ 'LOGIN.OR' | translate }}</span></div>
+      <ion-list-header lines="none">
         <ion-label>
           {{ 'LOGIN.ACCOUNT_LOGIN' | translate }}
         </ion-label>
@@ -49,7 +50,7 @@
         <ion-row>
           <ion-col>
             <ion-list>
-              <ion-list-header lines="full">
+              <ion-list-header lines="none">
                 <ion-label>
                   {{ 'LOGIN.ANON_LOGIN' | translate }}
                 </ion-label>
@@ -65,7 +66,7 @@
           </ion-col>
           <ion-col>
             <ion-list>
-              <ion-list-header lines="full">
+              <ion-list-header lines="none">
                 <ion-label>
                   {{ 'LOGIN.ACCOUNT_LOGIN' | translate }}
                 </ion-label>

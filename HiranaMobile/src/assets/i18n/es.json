@@ -22,7 +22,8 @@
     "ANON_LOGIN": "Acceder anonimamente",
     "LOGIN": "Acceder",
     "ACCOUNT_LOGIN": "Con cuenta de IRC",
-    "PASSWORD": "Contraseña"
+    "PASSWORD": "Contraseña",
+    "OR": "O"
   },
   "PRIVATES": {
     "TITLE": "Privados",
