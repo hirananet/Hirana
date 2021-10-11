@@ -1,4 +1,8 @@
+import { ChanServ } from './../channels/channels.service';
 import { Component, OnInit } from '@angular/core';
+import { ServerService, ListService, ChannelListData } from 'ircore';
+import { environment } from 'src/app/environment';
+import { NavController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-list',
@@ -8,23 +12,49 @@ import { Component, OnInit } from '@angular/core';
 export class ListPage implements OnInit {
 
   public loading = true;
-  public channels;
+  public channels: ChannelListData[];
 
-  constructor() { }
+  constructor(private readonly listSrv: ListService,
+              private readonly serverSrv: ServerService,
+              private readonly chanServ: ChanServ,
+              private readonly navCtrl: NavController,
+              private readonly toastController: ToastController) { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.loading = false;
-    }, 2000);
+    this.serverSrv.requestChannelList(environment.defaultServerID);
+    this.initialLoad();
+  }
+
+  initialLoad() {
+    this.loading = true;
+    this.serverSrv.requestChannelList(environment.defaultServerID);
+    const subscription = this.listSrv.notifications.subscribe(notification => {
+      if(notification.type == 'end-list') {
+        this.loading = false;
+        this.channels = notification.parsedObject;
+        subscription.unsubscribe();
+      }
+    });
+  }
+
+  async join(channel: ChannelListData) {
+    this.chanServ.joinChannel(channel.channelHash);
+    const toast = await this.toastController.create({
+      message: `Canal agregado ${channel.channelHash}`,
+      duration: 2000,
+      color: 'success'
+    });
+    toast.present();
+    this.navCtrl.navigateBack(`/tabs/channels`);
   }
 
   doRefresh(event) {
-    console.log('Begin async operation');
-
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      event.target.complete();
-    }, 2000);
+    const subscription = this.listSrv.notifications.subscribe(notification => {
+      if(notification.type == 'end-list') {
+        event.target.complete();
+        subscription.unsubscribe();
+      }
+    });
   }
 
 }

@@ -7,5 +7,20 @@
     <ion-list-header>
       <ion-label>{{'LIST.TITLE' | translate}}</ion-label>
     </ion-list-header>
+    <ion-item *ngFor="let channel of channels" class="ion-activatable ripple-parent" (click)="join(channel)">
+      <ion-icon slot="start" name="chatbubbles-sharp"></ion-icon>
+      <ion-label>
+        <ion-text>
+          <h3>{{channel.channelHash}}</h3>
+        </ion-text>
+        <ion-text color="medium">
+          <p>{{channel.description}}</p>
+        </ion-text>
+      </ion-label>
+      <ion-note slot="end" color="danger">
+        {{channel.modes}}
+      </ion-note>
+      <ion-badge slot="end" color="primary">{{channel.members}}</ion-badge>
+    </ion-item>
   </ion-list>
 </ion-content>

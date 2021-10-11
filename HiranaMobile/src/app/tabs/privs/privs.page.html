@@ -10,7 +10,7 @@
 
     <ion-item-sliding *ngFor="let privChat of privs">
       <ion-item (click)="openChat(privChat.name)" lines="none" class="ion-activatable ripple-parent">
-        <ion-icon slot="start" name="chatbubbles-sharp"></ion-icon>
+        <ion-icon slot="start" name="chatbox-ellipses-sharp"></ion-icon>
         <ion-label>{{privChat.name}}</ion-label>
       </ion-item>
       <ion-item-options side="end" (click)="removeChat(privChat.name)">

@@ -16,7 +16,9 @@ export class ChanServ {
         if(!this.channelList.find(chanData => chanData.name == chnl.name)) {
           const chanData = new ChannelData();
           chanData.name = chnl.name;
+          chanData.hash = chnl.hashedName;
           this.channelList.push(chanData);
+          console.log('CHANDATA', chnl);
         }
         this.saveChannels();
       }
@@ -50,7 +52,7 @@ export class ChanServ {
     const channels: ChannelData[] = JSON.parse(localStorage.getItem('hm_channels'));
     if(channels) {
       channels.forEach((channel: ChannelData) => {
-        this.joinChannel(channel.name);
+        this.joinChannel(channel.hash);
       });
       return channels;
     }
@@ -65,5 +67,6 @@ export class ChanServ {
 
 export class ChannelData {
   name: string;
+  hash: string;
   notifications: number;
 }

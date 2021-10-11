@@ -56,6 +56,7 @@ export class LoginPage implements OnInit {
     srvData.ircPort = 443;
     srvData.user.nick = this.nick;
     srvData.user.altNick = this.nick+'_';
+    srvData.user.user = this.nick;
     srvData.withWebSocket = true;
     srvData.withSSL = true;
     srvData.serverID = environment.defaultServerID;
