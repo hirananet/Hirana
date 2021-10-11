@@ -12,6 +12,7 @@
       <ion-item (click)="openChannel(channel.name)" lines="none" class="ion-activatable ripple-parent">
         <ion-icon slot="start" name="chatbubbles-sharp"></ion-icon>
         <ion-label>{{channel.name}}</ion-label>
+        <ion-badge slot="end" color="primary" *ngIf="channel.notifications > 0">{{channel.notifications}}</ion-badge>
       </ion-item>
       <ion-item-options side="end" (click)="leave(channel.name)">
         <ion-item-option color="danger">{{'CHANNELS.LEAVE' | translate}}</ion-item-option>

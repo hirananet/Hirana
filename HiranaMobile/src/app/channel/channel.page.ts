@@ -1,3 +1,4 @@
+import { ChanServ } from './../tabs/channels/channels.service';
 import { environment } from './../environment';
 import { Channel, ChannelsService, ServerService } from 'ircore';
 import { Component, OnInit } from '@angular/core';
@@ -16,6 +17,7 @@ export class ChannelPage implements OnInit {
   public message: string;
 
   constructor(private chanServ: ChannelsService,
+              private localChanSrv: ChanServ,
               private serverSrv: ServerService,
               private navCtrl: NavController,
               private route: ActivatedRoute,
@@ -27,6 +29,7 @@ export class ChannelPage implements OnInit {
   ionViewWillEnter(){
     this.channelHash = '#' + this.route.snapshot.paramMap.get('chanName');
     this.channel = this.chanServ.getChannel(environment.defaultServerID, new Channel(this.channelHash));
+    this.localChanSrv.setInChannel(this.route.snapshot.paramMap.get('chanName'));
   }
 
   openPriv(nick: string) {

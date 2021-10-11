@@ -8,6 +8,7 @@ import { environment } from '../../environment';
 export class ChanServ {
 
   private channelList: ChannelData[];
+  private inChannel: string;
 
   constructor(private chanServ: ChannelsService, private servSrv: ServerService) {
     chanServ.notifications.subscribe(d => {
@@ -17,8 +18,8 @@ export class ChanServ {
           const chanData = new ChannelData();
           chanData.name = chnl.name;
           chanData.hash = chnl.hashedName;
+          chanData.notifications = 0;
           this.channelList.push(chanData);
-          console.log('CHANDATA', chnl);
         }
         this.saveChannels();
       }
@@ -29,6 +30,12 @@ export class ChanServ {
           this.channelList.splice(idx, 1);
         }
         this.saveChannels();
+      }
+      if(d.type == 'message') {
+        // new message in channel
+        if(d.parsedObject.channel != this.inChannel) {
+          this.channelList.find(chnl => chnl.name == d.parsedObject.channel).notifications++;
+        }
       }
     });
   }
@@ -63,10 +70,15 @@ export class ChanServ {
     localStorage.setItem('hm_channels', JSON.stringify(this.channelList))
   }
 
+  public setInChannel(channelName: string) {
+    this.inChannel = channelName;
+    this.channelList.find(chnl => chnl.name == channelName).notifications = 0;
+  }
+
 }
 
 export class ChannelData {
   name: string;
   hash: string;
-  notifications: number;
+  notifications: number = 0;
 }
