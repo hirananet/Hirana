@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { CoreService } from './../core/core.service';
 import { ServerService } from 'ircore';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +15,10 @@ export class ConfigsPage implements OnInit {
   public nick: string;
   public serverName: string;
 
-  constructor(private srvSrv: ServerService, private cSrv: CoreService, private alertCtrl: AlertController) { }
+  constructor(private srvSrv: ServerService,
+              private cSrv: CoreService,
+              private alertCtrl: AlertController,
+              private translateSrv: TranslateService) { }
 
   ionViewWillEnter(){
     this.nick = this.srvSrv.getCurrentNick(environment.defaultServerID);
@@ -35,9 +39,9 @@ export class ConfigsPage implements OnInit {
   async logout() {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
-      header: 'Wipe',
-      message: 'Esto eliminará la configuración y te desconectará.',
-      buttons: ['Cancel', {text: 'Ok', handler: () => {
+      header: this.translateSrv.instant('CONFIGS.LOGOUT'),
+      message: this.translateSrv.instant('CONFIGS.LOGOUT_D'),
+      buttons: [this.translateSrv.instant('CANCEL'), {text: this.translateSrv.instant('OK'), handler: () => {
         localStorage.removeItem('hm_connection');
         window.location.reload();
       }}]
@@ -48,9 +52,9 @@ export class ConfigsPage implements OnInit {
   async wipe() {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
-      header: 'Wipe',
-      message: 'Esto eliminará la configuración, los mensajes, los canales, etc.',
-      buttons: ['Cancel', {text: 'Ok', handler: () => {
+      header: this.translateSrv.instant('CONFIGS.WIPE'),
+      message: this.translateSrv.instant('CONFIGS.WIPE_D'),
+      buttons: [this.translateSrv.instant('CANCEL'), {text: this.translateSrv.instant('OK'), handler: () => {
         localStorage.removeItem('hm_connection');
         localStorage.removeItem('hm_channels');
         localStorage.removeItem('hm_privs');

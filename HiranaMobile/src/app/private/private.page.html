@@ -27,8 +27,8 @@
       </ion-list>
     </div>
     <div class="content" *ngIf="!chat || chat.messages.length == 0">
-      <div class="placeholder" *ngIf="!this.channels || this.channels.length == 0">
-        <img src="assets/b612.png" (click)="debug()"/>
+      <div class="placeholder">
+        <img src="assets/b612.png"/>
         <h4>
           {{'NO_MESSAGES' | translate}}
         </h4>

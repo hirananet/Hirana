@@ -32,7 +32,9 @@
     "AUTHOR": "Author",
     "SERVER": "Server",
     "WIPE": "Wipe data",
+    "WIPE_D": "This action delete all configurations, messages, channels, etc.",
     "LOGOUT": "Logout",
+    "LOGOUT_D": "This delete the connection config and disconnect you.",
     "CLIENT": "Client"
   },
   "MESSAGE": "Your message here.",

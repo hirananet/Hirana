@@ -32,7 +32,9 @@
     "AUTHOR": "Autor",
     "SERVER": "Servidor",
     "WIPE": "Borrar datos",
+    "WIPE_D": "Esto eliminará la configuración, los mensajes, los canales, etc.",
     "LOGOUT": "Desconectar",
+    "LOGOUT_D": "Esto eliminará la configuración y te desconectará.",
     "CLIENT": "Cliente"
   },
   "MESSAGE": "Tu mensaje aquí.",
