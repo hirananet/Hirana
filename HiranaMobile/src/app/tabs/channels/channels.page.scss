@@ -5,6 +5,10 @@
   ion-icon {
     color: var(--color);
   }
+  img {
+    width: 100%;
+    max-width: 150px;
+  }
   .btnMock {
     background-color: var(--ion-color-primary, #3880ff);
     display: inline-block;

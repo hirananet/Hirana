@@ -38,6 +38,7 @@
   --message-box: #ffffffe0;
   --ion-color-primary-rgb: 28,34,41;
   --message-author-color: #181918;
+  --no-messages: #000000b5;
 
   --ion-color-primary-contrast-rgb: 255,255,255;
 
@@ -122,6 +123,7 @@
     --ion-color-primary-rgb: 28,34,41;
     --chat-bg-pattern: #3e3e3e;
     --message-author-color: wheat;
+    --no-messages: #000000b5;
   }
 
   .ios ion-modal {
