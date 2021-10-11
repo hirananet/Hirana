@@ -1,6 +1,6 @@
 import { TranslateService } from '@ngx-translate/core';
 import { ChanServ, ChannelData } from './channels.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
@@ -11,6 +11,7 @@ import { AlertController, NavController } from '@ionic/angular';
 export class ChannelsPage implements OnInit {
 
   public channels: ChannelData[];
+  @Input() showFavs: boolean = true;
 
   constructor(private readonly chanServ: ChanServ,
               public alertController: AlertController,

@@ -1,8 +1,11 @@
-<ion-content>
+<!-- <ion-content> -->
   <!-- <ion-searchbar placeholder="Canales"></ion-searchbar> -->
   <ion-list *ngIf="this.channels && this.channels.length > 0">
     <ion-list-header>
-      {{'CHANNELS.TITLE' | translate}}
+      <ion-label>{{'CHANNELS.TITLE' | translate}}</ion-label>
+      <ion-button (click)="addServer()" *ngIf="!showFavs">
+        <ion-icon name="add-sharp"></ion-icon>
+      </ion-button>
     </ion-list-header>
 
     <ion-item-sliding *ngFor="let channel of channels">
@@ -26,9 +29,9 @@
     </p>
   </div>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="showFavs">
     <ion-fab-button (click)="addServer()">
       <ion-icon name="add-sharp"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-</ion-content>
+<!-- </ion-content> -->

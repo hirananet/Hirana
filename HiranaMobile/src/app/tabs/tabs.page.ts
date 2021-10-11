@@ -1,8 +1,8 @@
+import { CoreService } from './../core/core.service';
 import { ChannelsService } from 'ircore';
 import { PrivService } from './privs/privs.service';
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { TranslateService } from '@ngx-translate/core';
+import { NavController, Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-tabs',
@@ -11,11 +11,18 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class TabsPage implements OnInit {
 
+  public tabletMode: boolean = false;
+  public server: string = 'hirana.net';
+
   constructor(private readonly privSrv: PrivService,
               private readonly chanServ: ChannelsService,
-              private navCtrl: NavController) { }
+              private readonly navCtrl: NavController,
+              private readonly platform: Platform,
+              private readonly core: CoreService) { }
 
   ngOnInit() {
+    this.tabletMode = this.platform.is('tablet') || this.platform.is('ipad');
+    this.server = this.core.getServerName();
   }
 
   openConfig() {

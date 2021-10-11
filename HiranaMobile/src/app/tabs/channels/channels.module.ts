@@ -19,6 +19,7 @@ import { ChannelsPage } from './channels.page';
       extend: true
     })
   ],
-  declarations: [ChannelsPage]
+  declarations: [ChannelsPage],
+  exports: [ChannelsPage]
 })
 export class ChannelsPageModule {}

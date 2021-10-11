@@ -1,3 +1,5 @@
+import { ChannelsPageModule } from './channels/channels.module';
+import { PrivsPageModule } from './privs/privs.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -17,7 +19,9 @@ import { TranslateModule } from '@ngx-translate/core';
     TabsPageRoutingModule,
     TranslateModule.forChild({
       extend: true
-    })
+    }),
+    PrivsPageModule,
+    ChannelsPageModule
   ],
   declarations: [TabsPage]
 })

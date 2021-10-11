@@ -2,7 +2,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { PrivService, PrivChatData } from './privs.service';
 import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
-import { environment } from 'src/app/environment';
 
 @Component({
   selector: 'app-privs',

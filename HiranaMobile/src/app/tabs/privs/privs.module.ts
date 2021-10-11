@@ -19,6 +19,7 @@ import { PrivsPage } from './privs.page';
       extend: true
     })
   ],
-  declarations: [PrivsPage]
+  declarations: [PrivsPage],
+  exports: [PrivsPage]
 })
 export class PrivsPageModule {}

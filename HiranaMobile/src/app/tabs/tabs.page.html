@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Hirana.net</ion-title>
+    <ion-title>{{server}}</ion-title>
     <ion-buttons slot="end">
       <ion-button color="secondary" (click)="openConfig()">
         <ion-icon slot="icon-only" ios="cog-sharp" md="settings-sharp"></ion-icon>
@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="!tabletMode">
   <ion-tabs>
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="privs">
@@ -30,4 +30,17 @@
 
     </ion-tab-bar>
   </ion-tabs>
+</ion-content>
+
+<ion-content *ngIf="tabletMode">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <app-channels [showFavs]="false"></app-channels>
+      </ion-col>
+      <ion-col>
+        <app-privs></app-privs>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
