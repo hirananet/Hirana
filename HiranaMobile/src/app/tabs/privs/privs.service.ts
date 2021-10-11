@@ -8,6 +8,7 @@ import { environment } from 'src/app/environment';
 export class PrivService {
 
   private privList: PrivChatData[] = [];
+  private inPrivate: string;
 
   constructor(private readonly privSrv: PrivsService) {
     this.loadPrivs();
@@ -21,10 +22,15 @@ export class PrivService {
       if(r.type === 'message') {
         const chat = this.getChat(r.parsedObject.author);
         if(chat) {
-          chat.newMessage(r.parsedObject.content);
+          chat.newMessage(r.parsedObject.content, r.parsedObject.author == this.inPrivate);
         }
       }
     });
+  }
+
+  public setInPriv(name: string) {
+    this.inPrivate = name;
+    this.getChat(name).clearNotifications();
   }
 
   public getChat(name: string) {
@@ -61,15 +67,23 @@ export class PrivChatData {
   public name: string;
   public lastDateMessage: number;
   public lastMessage: string;
+  public notifications: number = 0;
 
   constructor(name: string) {
     this.name = name;
     this.lastDateMessage = (new Date()).getTime();
   }
 
-  public newMessage(message: string) {
+  public newMessage(message: string, isOpened: boolean) {
     this.lastMessage = message;
     this.lastDateMessage = (new Date()).getTime();
+    if(!isOpened) {
+      this.notifications++;
+    }
+  }
+
+  public clearNotifications() {
+    this.notifications = 0;
   }
 
 }

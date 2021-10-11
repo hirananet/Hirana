@@ -32,6 +32,10 @@ export class ChannelPage implements OnInit {
     this.localChanSrv.setInChannel(this.route.snapshot.paramMap.get('chanName'));
   }
 
+  ionViewWillLeave(){
+    this.localChanSrv.setInChannel('');
+  }
+
   openPriv(nick: string) {
     this.navCtrl.navigateForward(`/private/${nick}`)
   }

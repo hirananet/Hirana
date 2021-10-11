@@ -12,6 +12,7 @@
       <ion-item (click)="openChat(privChat.name)" lines="none" class="ion-activatable ripple-parent">
         <ion-icon slot="start" name="chatbox-ellipses-sharp"></ion-icon>
         <ion-label>{{privChat.name}}</ion-label>
+        <ion-badge slot="end" color="primary" *ngIf="privChat.notifications > 0">{{privChat.notifications}}</ion-badge>
       </ion-item>
       <ion-item-options side="end" (click)="removeChat(privChat.name)">
         <ion-item-option color="danger">{{'PRIVATES.CLOSE' | translate}}</ion-item-option>
