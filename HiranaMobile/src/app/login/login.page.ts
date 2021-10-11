@@ -76,6 +76,20 @@ export class LoginPage implements OnInit {
       this.presentError(this.translateSrv.instant('LOGIN.E_PASSWORD'));
       return;
     }
+    const srvData = new ServerData();
+    srvData.ircServer = 'irc.hirana.net';
+    srvData.ircPort = 443;
+    srvData.user.nick = this.nick2;
+    srvData.user.altNick = this.nick2+'_';
+    srvData.user.user = this.nick2;
+    srvData.user.password = this.password;
+    srvData.user.identify = true;
+    srvData.withWebSocket = true;
+    srvData.withSSL = true;
+    srvData.serverID = environment.defaultServerID;
+    localStorage.setItem('hm_lastNick', srvData.user.nick);
+    this.saveConnection(srvData);
+    this.doConnection(srvData);
   }
 
   fullLogin() {

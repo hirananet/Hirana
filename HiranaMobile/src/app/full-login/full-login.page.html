@@ -40,16 +40,16 @@
         <ion-input placeholder="MyNick_" [(ngModel)]="altNick"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>{{'LOGIN.BOUNCER' | translate}}</ion-label>
-        <ion-toggle [(ngModel)]="withBouncer"></ion-toggle>
+        <ion-label>{{'LOGIN.IDENTIFY' | translate}}</ion-label>
+        <ion-toggle [(ngModel)]="identify"></ion-toggle>
       </ion-item>
       <ion-item>
-        <ion-label>{{'LOGIN.U_B' | translate}}</ion-label>
-        <ion-input placeholder="MyAccount" [(ngModel)]="user" [disabled]="!withBouncer"></ion-input>
+        <ion-label>{{'LOGIN.USER' | translate}}</ion-label>
+        <ion-input placeholder="MyAccount" [(ngModel)]="user"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>{{'LOGIN.P_B' | translate}}</ion-label>
-        <ion-input type="password" placeholder="Password" [(ngModel)]="password" [disabled]="!withBouncer"></ion-input>
+        <ion-label>{{'LOGIN.POPT' | translate}}</ion-label>
+        <ion-input type="password" placeholder="Password" [(ngModel)]="password" [disabled]="!identify"></ion-input>
       </ion-item>
       <ion-list-header lines="full">
         <ion-label>

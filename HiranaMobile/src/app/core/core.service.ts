@@ -23,6 +23,20 @@ export class CoreService {
 
   connect(srvData: ServerData) {
     this.serverSrv.connect(srvData);
+    if(srvData.user.password) {
+      const subscript = this.noticeSrv.notifications.subscribe(d => {
+        if(d.type == 'require-pass') {
+          this.serverSrv.serverPass(srvData.serverID, srvData.user.user, srvData.user.password);
+          if(!srvData.user.identify) {
+            subscript.unsubscribe();
+          }
+        }
+        if(d.type == 'motd' && srvData.user.identify) {
+          this.serverSrv.identify(srvData.serverID, srvData.user.password);
+          subscript.unsubscribe();
+        }
+      });
+    }
     this.ingressed = true;
   }
 

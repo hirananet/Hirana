@@ -21,7 +21,7 @@ export class FullLoginPage implements OnInit {
 
   public nick: string;
   public altNick: string;
-  public withBouncer: boolean = false;
+  public identify: boolean = false;
   public user: string;
   public password: string;
 
@@ -64,6 +64,7 @@ export class FullLoginPage implements OnInit {
     srvData.user.altNick = this.altNick;
     srvData.user.password = this.password;
     srvData.user.user = this.user;
+    srvData.user.identify = this.identify;
     localStorage.setItem('hm_lastNick', srvData.user.nick);
     this.saveConnection(srvData);
     this.doConnection(srvData);
