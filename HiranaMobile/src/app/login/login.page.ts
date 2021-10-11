@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { environment } from '../environment';
 import { CoreService } from './../core/core.service';
 import { Component, HostListener, OnInit } from '@angular/core';
@@ -20,7 +21,8 @@ export class LoginPage implements OnInit {
 
   constructor(private readonly coreSrv: CoreService,
               private readonly navCtrl: NavController,
-              public toastController: ToastController) { }
+              private readonly toastController: ToastController,
+              private readonly translateSrv: TranslateService) { }
 
   ngOnInit() {
     const lastConnection = JSON.parse(localStorage.getItem('hm_connection'));
@@ -48,7 +50,7 @@ export class LoginPage implements OnInit {
 
   simpleLogin() {
     if(!this.nick || this.nick.length < 3) {
-      this.presentError('Debe ingresar un nick de al menos 3 caracteres');
+      this.presentError(this.translateSrv.instant('LOGIN.E_NICK'));
       return;
     }
     const srvData = new ServerData();
@@ -67,11 +69,11 @@ export class LoginPage implements OnInit {
 
   passwordLogin() {
     if(!this.nick2 || this.nick2.length < 3) {
-      this.presentError('Debe ingresar un nick de al menos 3 caracteres');
+      this.presentError(this.translateSrv.instant('LOGIN.E_NICK'));
       return;
     }
     if(!this.password || this.password.length < 3) {
-      this.presentError('Debe ingresar una password de al menos 3 caracteres');
+      this.presentError(this.translateSrv.instant('LOGIN.E_PASSWORD'));
       return;
     }
   }

@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { ChanServ } from './../channels/channels.service';
 import { Component, OnInit } from '@angular/core';
 import { ServerService, ListService, ChannelListData } from 'ircore';
@@ -18,7 +19,8 @@ export class ListPage implements OnInit {
               private readonly serverSrv: ServerService,
               private readonly chanServ: ChanServ,
               private readonly navCtrl: NavController,
-              private readonly toastController: ToastController) { }
+              private readonly toastController: ToastController,
+              private readonly translateSrv: TranslateService) { }
 
   ngOnInit() {
     this.serverSrv.requestChannelList(environment.defaultServerID);
@@ -40,7 +42,7 @@ export class ListPage implements OnInit {
   async join(channel: ChannelListData) {
     this.chanServ.joinChannel(channel.channelHash);
     const toast = await this.toastController.create({
-      message: `Canal agregado ${channel.channelHash}`,
+      message: `${this.translateSrv.instant('LIST.CHAN_ADDED')} ${channel.channelHash}`,
       duration: 2000,
       color: 'success'
     });

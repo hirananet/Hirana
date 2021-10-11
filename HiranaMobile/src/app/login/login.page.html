@@ -17,32 +17,32 @@
     <ion-list *ngIf="!landscape">
       <ion-list-header lines="full">
         <ion-label>
-          Anonymous login
+          {{ 'LOGIN.ANON_LOGIN' | translate }}
         </ion-label>
       </ion-list-header>
       <ion-item-group>
         <ion-item lines="none">
-          <ion-label position="stacked">Nick</ion-label>
+          <ion-label position="stacked">{{ 'LOGIN.NICK' | translate }}</ion-label>
           <input [(ngModel)]="nick" />
         </ion-item>
       </ion-item-group>
-      <ion-button expand="block" (click)="simpleLogin()">Login</ion-button>
+      <ion-button expand="block" (click)="simpleLogin()">{{ 'LOGIN.LOGIN' | translate }}</ion-button>
       <ion-list-header lines="full">
         <ion-label>
-          Account login
+          {{ 'LOGIN.ACCOUNT_LOGIN' | translate }}
         </ion-label>
       </ion-list-header>
       <ion-item-group>
         <ion-item lines="none">
-          <ion-label position="stacked">Nick</ion-label>
+          <ion-label position="stacked">{{ 'LOGIN.NICK' | translate }}</ion-label>
           <input [(ngModel)]="nick2" />
         </ion-item>
         <ion-item lines="none">
-          <ion-label position="stacked">Password</ion-label>
+          <ion-label position="stacked">{{ 'LOGIN.PASSWORD' | translate }}</ion-label>
           <input type="password" [(ngModel)]="password" />
         </ion-item>
       </ion-item-group>
-      <ion-button expand="block" (click)="passwordLogin()">Login</ion-button>
+      <ion-button expand="block" (click)="passwordLogin()">{{ 'LOGIN.LOGIN' | translate }}</ion-button>
     </ion-list>
     <ion-content *ngIf="landscape">
       <ion-grid>
@@ -51,36 +51,36 @@
             <ion-list>
               <ion-list-header lines="full">
                 <ion-label>
-                  Anonymous login
+                  {{ 'LOGIN.ANON_LOGIN' | translate }}
                 </ion-label>
               </ion-list-header>
               <ion-item-group>
                 <ion-item lines="none">
-                  <ion-label position="stacked">Nick</ion-label>
+                  <ion-label position="stacked">{{ 'LOGIN.NICK' | translate }}</ion-label>
                   <input [(ngModel)]="nick" />
                 </ion-item>
               </ion-item-group>
-              <ion-button expand="block" (click)="simpleLogin()">Login</ion-button>
+              <ion-button expand="block" (click)="simpleLogin()">{{ 'LOGIN.LOGIN' | translate }}</ion-button>
             </ion-list>
           </ion-col>
           <ion-col>
             <ion-list>
               <ion-list-header lines="full">
                 <ion-label>
-                  Account login
+                  {{ 'LOGIN.ACCOUNT_LOGIN' | translate }}
                 </ion-label>
               </ion-list-header>
               <ion-item-group>
                 <ion-item lines="none">
-                  <ion-label position="stacked">Nick</ion-label>
+                  <ion-label position="stacked">{{ 'LOGIN.NICK' | translate }}</ion-label>
                   <input [(ngModel)]="nick2" />
                 </ion-item>
                 <ion-item lines="none">
-                  <ion-label position="stacked">Password</ion-label>
+                  <ion-label position="stacked">{{ 'LOGIN.PASSWORD' | translate }}</ion-label>
                   <input type="password" [(ngModel)]="password" />
                 </ion-item>
               </ion-item-group>
-              <ion-button expand="block" (click)="passwordLogin()">Login</ion-button>
+              <ion-button expand="block" (click)="passwordLogin()">{{ 'LOGIN.LOGIN' | translate }}</ion-button>
             </ion-list>
           </ion-col>
         </ion-row>

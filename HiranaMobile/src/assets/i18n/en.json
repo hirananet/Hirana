@@ -1,8 +1,9 @@
 {
   "TEST": "test",
   "LOGIN": {
-    "E_NICK": "Debe ingresar un nick de al menos 3 caracteres",
-    "E_ALTNICK": "Debe ingresar un nick alternativo de al menos 3 caracteres",
+    "E_NICK": "You must write a nick with almost 3 characters",
+    "E_ALTNICK": "You must write a alt-nick with almost 3 characters",
+    "E_PASSWORD": "You must write a password with almost 3 characters",
     "FULL_TITLE": "Server configuration",
     "SERVER": "Server",
     "SERVER_HOST": "Server host",
@@ -18,7 +19,11 @@
     "WWS": "With websocket?",
     "GATEWAY_SERVER": "Gateway server",
     "GATEWAY_PORT": "Gateway server port",
-    "CONNECT": "Connect"
+    "CONNECT": "Connect",
+    "ANON_LOGIN": "Anonymous login",
+    "LOGIN": "Login",
+    "ACCOUNT_LOGIN": "Account login",
+    "PASSWORD": "Password"
   },
   "PRIVATES": {
     "TITLE": "Directs",
@@ -39,7 +44,8 @@
     "NEW_D": "Add and join to a channel by name"
   },
   "LIST": {
-    "TITLE": "Ch List"
+    "TITLE": "Ch List",
+    "CHAN_ADDED": "Channel added: "
   },
   "CONFIGS": {
     "TITLE": "Configurations",

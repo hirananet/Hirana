@@ -3,6 +3,7 @@
   "LOGIN": {
     "E_NICK": "Debe ingresar un nick de al menos 3 caracteres",
     "E_ALTNICK": "Debe ingresar un nick alternativo de al menos 3 caracteres",
+    "E_PASSWORD": "Debe ingresar una password de al menos 3 caracteres",
     "FULL_TITLE": "Configuración",
     "SERVER": "Servidor",
     "SERVER_HOST": "Host del servidor",
@@ -18,7 +19,11 @@
     "WWS": "Usar websocket?",
     "GATEWAY_SERVER": "Gateway",
     "GATEWAY_PORT": "Puerto del gateway",
-    "CONNECT": "Conectar"
+    "CONNECT": "Conectar",
+    "ANON_LOGIN": "Acceder anonimamente",
+    "LOGIN": "Acceder",
+    "ACCOUNT_LOGIN": "Con cuenta de IRC",
+    "PASSWORD": "Contraseña"
   },
   "PRIVATES": {
     "TITLE": "Privados",
@@ -39,7 +44,8 @@
     "NEW_D": "Agrega y unirse a un canal por su nombre."
   },
   "LIST": {
-    "TITLE": "Lista"
+    "TITLE": "Lista",
+    "CHAN_ADDED": "Canal agregado: "
   },
   "CONFIGS": {
     "TITLE": "Configuraciones",
