@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { CoreService } from './../core/core.service';
 import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
@@ -24,7 +25,10 @@ export class FullLoginPage implements OnInit {
   public user: string;
   public password: string;
 
-  constructor(private readonly coreSrv: CoreService, private readonly navCtrl: NavController, public toastController: ToastController) { }
+  constructor(private readonly coreSrv: CoreService,
+              private readonly navCtrl: NavController,
+              private readonly toastController: ToastController,
+              private readonly translateSrv: TranslateService) { }
 
   ngOnInit() {
   }
@@ -40,11 +44,11 @@ export class FullLoginPage implements OnInit {
 
   connect() {
     if(!this.nick || this.nick.length < 3) {
-      this.presentError('Debe ingresar un nick de al menos 3 caracteres');
+      this.presentError(this.translateSrv.instant('LOGIN.E_NICK'));
       return;
     }
     if(!this.altNick || this.altNick.length < 3 || this.altNick == this.nick) {
-      this.presentError('Debe ingresar un nick alternativo de al menos 3 caracteres');
+      this.presentError(this.translateSrv.instant('LOGIN.E_ALTNICK'));
       return;
     }
     const srvData = new ServerData();

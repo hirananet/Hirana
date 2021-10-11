@@ -1,5 +1,25 @@
 {
   "TEST": "prueba",
+  "LOGIN": {
+    "E_NICK": "Debe ingresar un nick de al menos 3 caracteres",
+    "E_ALTNICK": "Debe ingresar un nick alternativo de al menos 3 caracteres",
+    "FULL_TITLE": "Configuración",
+    "SERVER": "Servidor",
+    "SERVER_HOST": "Host del servidor",
+    "SERVER_PORT": "Puerto del servidor",
+    "WITH_TLS": "Con TLS",
+    "USER": "Usuario",
+    "NICK": "Nick",
+    "ALTNICK": "Nick Alternativo",
+    "BOUNCER": "Usar bouncer?",
+    "U_B": "Usuario (bouncer)",
+    "P_B": "Contraseña (bouncer)",
+    "GATEWAY": "Configuración del Gateway",
+    "WWS": "Usar websocket?",
+    "GATEWAY_SERVER": "Gateway",
+    "GATEWAY_PORT": "Puerto del gateway",
+    "CONNECT": "Conectar"
+  },
   "PRIVATES": {
     "TITLE": "Privados",
     "NO_DM": "No tienes chats privados!",

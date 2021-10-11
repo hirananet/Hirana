@@ -15,10 +15,10 @@ export class ConfigsPage implements OnInit {
   public nick: string;
   public serverName: string;
 
-  constructor(private srvSrv: ServerService,
-              private cSrv: CoreService,
-              private alertCtrl: AlertController,
-              private translateSrv: TranslateService) { }
+  constructor(private readonly srvSrv: ServerService,
+              private readonly cSrv: CoreService,
+              private readonly alertCtrl: AlertController,
+              private readonly translateSrv: TranslateService) { }
 
   ionViewWillEnter(){
     this.nick = this.srvSrv.getCurrentNick(environment.defaultServerID);

@@ -1,5 +1,25 @@
 {
   "TEST": "test",
+  "LOGIN": {
+    "E_NICK": "Debe ingresar un nick de al menos 3 caracteres",
+    "E_ALTNICK": "Debe ingresar un nick alternativo de al menos 3 caracteres",
+    "FULL_TITLE": "Server configuration",
+    "SERVER": "Server",
+    "SERVER_HOST": "Server host",
+    "SERVER_PORT": "Server port",
+    "WITH_TLS": "With TLS",
+    "USER": "User",
+    "NICK": "Nick",
+    "ALTNICK": "Alternative Nick",
+    "BOUNCER": "Use bouncer?",
+    "U_B": "User (bouncer)",
+    "P_B": "Password (bouncer)",
+    "GATEWAY": "Gateway configuration",
+    "WWS": "With websocket?",
+    "GATEWAY_SERVER": "Gateway server",
+    "GATEWAY_PORT": "Gateway server port",
+    "CONNECT": "Connect"
+  },
   "PRIVATES": {
     "TITLE": "Directs",
     "NO_DM": "You haven't direct messages!",
