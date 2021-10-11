@@ -57,7 +57,7 @@ export class PrivService {
   public loadPrivs() {
     const privs = JSON.parse(localStorage.getItem('hm_privs'));
     if(privs) {
-      this.privList = privs;
+      this.privList = privs.map(priv => PrivChatData.ReconstructFromStorage(priv));
     }
   }
 
@@ -68,6 +68,14 @@ export class PrivChatData {
   public lastDateMessage: number;
   public lastMessage: string;
   public notifications: number = 0;
+
+  public static ReconstructFromStorage(priv: PrivChatData): PrivChatData {
+    const privData = new PrivChatData(priv.name);
+    privData.lastDateMessage = priv.lastDateMessage;
+    privData.lastMessage = priv.lastMessage;
+    privData.notifications = 0;
+    return privData;
+  }
 
   constructor(name: string) {
     this.name = name;
