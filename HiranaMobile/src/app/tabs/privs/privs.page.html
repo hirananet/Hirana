@@ -19,12 +19,16 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+
   <div class="placeholder" *ngIf="!this.privs || this.privs.length == 0">
     <img src="assets/b612.png"/>
     <h4>{{'PRIVATES.NO_DM' | translate}}</h4>
     <p>
       {{'PRIVATES.OPEN_DM' | translate}}
     </p>
+    <ion-button (click)="newPriv()">
+      <ion-icon name="add-sharp"></ion-icon>
+    </ion-button>
   </div>
 
 <!-- </ion-content> -->

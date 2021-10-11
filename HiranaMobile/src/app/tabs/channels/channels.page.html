@@ -25,7 +25,7 @@
     <img src="assets/b612.png" (click)="debug()"/>
     <h4>{{'CHANNELS.NO_CHANS' | translate}}</h4>
     <p>
-      {{'CHANNELS.JOIN_CHANS' | translate}} <span class="btnMock">+</span> <br/>
+      {{'CHANNELS.JOIN_CHANS' | translate}} <span class="btnMock" (click)="addServer()">+</span> <br/>
       {{'CHANNELS.OR_LIST' | translate}} (<ion-icon name="albums-sharp"></ion-icon>)
     </p>
   </div>
