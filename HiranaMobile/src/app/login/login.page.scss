@@ -4,6 +4,12 @@ div.container {
     height: 100%;
     ion-row {
       height: 100%;
+      ion-col {
+        background: rgb(0 0 0 / 10%);
+        ion-button {
+          margin-bottom: 15px;
+        }
+      }
     }
   }
   ion-button {
