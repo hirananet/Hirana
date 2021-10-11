@@ -10,16 +10,81 @@
 </ion-header>
 
 <ion-content>
-  <div class="logoContainer">
-    <img src="assets/logo.png" class="logo"/>
+  <div class="container">
+    <div class="logoContainer" *ngIf="!landscape">
+      <img src="assets/logo.png" class="logo"/>
+    </div>
+    <ion-list *ngIf="!landscape">
+      <ion-list-header lines="full">
+        <ion-label>
+          Anonymous login
+        </ion-label>
+      </ion-list-header>
+      <ion-item-group>
+        <ion-item lines="none">
+          <ion-label position="stacked">Nick</ion-label>
+          <input [(ngModel)]="nick" />
+        </ion-item>
+      </ion-item-group>
+      <ion-button expand="block" (click)="simpleLogin()">Login</ion-button>
+      <ion-list-header lines="full">
+        <ion-label>
+          Account login
+        </ion-label>
+      </ion-list-header>
+      <ion-item-group>
+        <ion-item lines="none">
+          <ion-label position="stacked">Nick</ion-label>
+          <input [(ngModel)]="nick2" />
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="stacked">Password</ion-label>
+          <input type="password" [(ngModel)]="password" />
+        </ion-item>
+      </ion-item-group>
+      <ion-button expand="block" (click)="passwordLogin()">Login</ion-button>
+    </ion-list>
+    <ion-content *ngIf="landscape">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-list-header lines="full">
+                <ion-label>
+                  Anonymous login
+                </ion-label>
+              </ion-list-header>
+              <ion-item-group>
+                <ion-item lines="none">
+                  <ion-label position="stacked">Nick</ion-label>
+                  <input [(ngModel)]="nick" />
+                </ion-item>
+              </ion-item-group>
+              <ion-button expand="block" (click)="simpleLogin()">Login</ion-button>
+            </ion-list>
+          </ion-col>
+          <ion-col>
+            <ion-list>
+              <ion-list-header lines="full">
+                <ion-label>
+                  Account login
+                </ion-label>
+              </ion-list-header>
+              <ion-item-group>
+                <ion-item lines="none">
+                  <ion-label position="stacked">Nick</ion-label>
+                  <input [(ngModel)]="nick2" />
+                </ion-item>
+                <ion-item lines="none">
+                  <ion-label position="stacked">Password</ion-label>
+                  <input type="password" [(ngModel)]="password" />
+                </ion-item>
+              </ion-item-group>
+              <ion-button expand="block" (click)="passwordLogin()">Login</ion-button>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
   </div>
-  <section>
-    <ion-item-group>
-      <ion-item lines="none">
-        <ion-label position="floating">Nick</ion-label>
-        <ion-input [(ngModel)]="nick"></ion-input>
-      </ion-item>
-    </ion-item-group>
-    <ion-button expand="block" (click)="simpleLogin()">Login</ion-button>
-  </section>
 </ion-content>

@@ -10,7 +10,6 @@ export class AppComponent {
   constructor(translateSrv: TranslateService) {
     let lang: any = navigator.language.split('-');
     lang = lang.length > 1 ? lang[0] : lang;
-    // translateSrv.use(lang);
-    console.log('Lang required', lang);
+    translateSrv.use(lang);
   }
 }

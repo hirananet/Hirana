@@ -1,7 +1,52 @@
-section {
-  padding: 10px;
+div.container {
+  height: 100%;
+  ion-grid {
+    height: 100%;
+    ion-row {
+      height: 100%;
+    }
+  }
+}
+ion-button {
+  margin: 0px 15px;
+  margin-top: 5px;
+}
+input {
+  border: 0px;
+  border-bottom: 1px solid gray;
+  padding: 5px;
+  outline: none;
+  margin-bottom: 5px;
+  width: calc(100% - 15px);
 }
 .logoContainer {
   display: flex;
   justify-content: center;
+  img {
+    border: 0;
+    width: 30vw;
+  }
+}
+.hr {
+  text-align: center;
+  position: relative;
+  &::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background: gray;
+    position: absolute;
+    top: 50%;
+    width: calc(50% - 15px);
+    right: 0px;
+  }
+  &::before {
+    content: "";
+    display: block;
+    height: 1px;
+    background: gray;
+    position: absolute;
+    top: 50%;
+    width: calc(50% - 15px);
+  }
 }

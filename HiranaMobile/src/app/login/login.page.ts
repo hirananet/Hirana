@@ -1,6 +1,6 @@
 import { environment } from '../environment';
 import { CoreService } from './../core/core.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ServerData } from 'ircore';
 import { NavController, ToastController } from '@ionic/angular';
 
@@ -13,14 +13,28 @@ export class LoginPage implements OnInit {
 
   public nick: string;
 
-  constructor(private readonly coreSrv: CoreService, private readonly navCtrl: NavController, public toastController: ToastController) { }
+  public nick2: string;
+  public password: string;
+
+  public landscape: boolean;
+
+  constructor(private readonly coreSrv: CoreService,
+              private readonly navCtrl: NavController,
+              public toastController: ToastController) { }
 
   ngOnInit() {
     const lastConnection = JSON.parse(localStorage.getItem('hm_connection'));
     this.nick = localStorage.getItem('hm_lastNick');
+    this.nick2 = this.nick;
     if(lastConnection) {
       this.doConnection(lastConnection);
     }
+    this.landscape = window.innerWidth > window.innerHeight;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.landscape = event.target.innerWidth > event.target.innerHeight;
   }
 
   async presentError(message: string) {
@@ -48,6 +62,17 @@ export class LoginPage implements OnInit {
     localStorage.setItem('hm_lastNick', srvData.user.nick);
     this.saveConnection(srvData);
     this.doConnection(srvData);
+  }
+
+  passwordLogin() {
+    if(!this.nick2 || this.nick2.length < 3) {
+      this.presentError('Debe ingresar un nick de al menos 3 caracteres');
+      return;
+    }
+    if(!this.password || this.password.length < 3) {
+      this.presentError('Debe ingresar una password de al menos 3 caracteres');
+      return;
+    }
   }
 
   fullLogin() {
