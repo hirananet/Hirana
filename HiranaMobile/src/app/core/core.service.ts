@@ -17,6 +17,10 @@ export class CoreService {
     })
   }
 
+  getServerData(serverID: string): ServerData {
+    return this.serverSrv.getServerById(serverID);
+  }
+
   getServerName() {
     return this.serverName;
   }
