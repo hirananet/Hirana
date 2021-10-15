@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Hirana.net</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="secondary" (click)="cancelConnection()" *ngIf="cancelButton">
+        Cancel
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

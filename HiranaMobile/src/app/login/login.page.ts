@@ -25,12 +25,8 @@ export class LoginPage implements OnInit {
               private readonly translateSrv: TranslateService) { }
 
   ngOnInit() {
-    const lastConnection = JSON.parse(localStorage.getItem('hm_connection'));
     this.nick = localStorage.getItem('hm_lastNick');
     this.nick2 = this.nick;
-    if(lastConnection) {
-      this.doConnection(lastConnection);
-    }
     this.landscape = window.innerWidth > window.innerHeight;
   }
 
@@ -97,7 +93,7 @@ export class LoginPage implements OnInit {
   }
 
   doConnection(srvData) {
-    this.coreSrv.connect(srvData);
+    this.coreSrv.setConnection(srvData);
     this.navCtrl.navigateRoot('/ingress');
   }
 

@@ -8,6 +8,7 @@ export class CoreService {
 
   private ingressed = false;
   private serverName = '';
+  private lastConnectionServer: ServerData;
 
   constructor(private serverSrv: ServerService, private noticeSrv: NoticesService) {
     this.noticeSrv.notifications.subscribe(d => {
@@ -25,7 +26,12 @@ export class CoreService {
     return this.serverName;
   }
 
-  connect(srvData: ServerData) {
+  connect(srvData?: ServerData) {
+    if(srvData) {
+      this.lastConnectionServer = srvData;
+    } else {
+      srvData = this.lastConnectionServer;
+    }
     this.serverSrv.connect(srvData);
     if(srvData.user.password) {
       const subscript = this.noticeSrv.notifications.subscribe(d => {
@@ -46,6 +52,11 @@ export class CoreService {
 
   public isIngressed() {
     return this.ingressed;
+  }
+
+  public setConnection(srvData: ServerData) {
+    this.lastConnectionServer = srvData
+    this.ingressed = true;
   }
 
 }
