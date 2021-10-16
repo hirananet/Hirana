@@ -1,0 +1,23 @@
+IndexedDB:
+* en agregar priv tirar un who para verificar que el nick existe y como se escribe realmente.
+* borrar conversación al borrar chat/canal de IndexedDB
+
+Parsing:
+* Links
+* Fotos
+* Videos
+* Emotes
+
+Opciones:
+* Cambio de nick
+* Cambio de avatar
+* +g
+
+UX:
+* Congelar chat al subir
+* Virtual scroll
+* Ordenar privados y chats por el que tenga notificación más nueva
+
+--- Hnc: Hirana network connection
+* Hacer el Hnc
+* Agregar sistema de notificaciones
