@@ -1,4 +1,4 @@
-import { ServerData, ServerService, NoticesService } from 'ircore';
+import { ServerData, ServerService, NoticesService, PrivsService, ChannelsService } from 'ircore';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -10,12 +10,17 @@ export class CoreService {
   private serverName = '';
   private lastConnectionServer: ServerData;
 
-  constructor(private serverSrv: ServerService, private noticeSrv: NoticesService) {
+  constructor(private serverSrv: ServerService,
+              private noticeSrv: NoticesService,
+              private privSrv: PrivsService,
+              private chnlSrv: ChannelsService) {
     this.noticeSrv.notifications.subscribe(d => {
       if(d.type == 'motd') {
         this.serverName = d.raw.partials[0];
       }
-    })
+    });
+    this.privSrv.enableAutoSave();
+    this.chnlSrv.enableAutoSave();
   }
 
   getServerData(serverID: string): ServerData {
