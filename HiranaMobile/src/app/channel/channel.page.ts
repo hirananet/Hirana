@@ -17,10 +17,11 @@ export class ChannelPage implements OnInit {
   public channel: Channel = new Channel('');
   public message: string;
 
-  private subsc: Subscription;
   private scrollLocked: boolean;
-  private autoScroll: boolean;
+  private manualScroll: boolean;
   public newMessagesWithoutRead: boolean;
+  private intevalScroll;
+  private subsc: Subscription;
 
   constructor(private chanServ: ChannelsService,
               private localChanSrv: ChanServ,
@@ -36,51 +37,54 @@ export class ChannelPage implements OnInit {
     this.channelHash = '#' + this.route.snapshot.paramMap.get('chanName');
     this.channel = this.chanServ.getChannel(environment.defaultServerID, new Channel(this.channelHash));
     this.localChanSrv.setInChannel(this.route.snapshot.paramMap.get('chanName'));
+    this.scrollToBottom();
     this.subsc = this.chanServ.notifications.subscribe(d => {
-      if(d.type == 'message' && d.parsedObject.channel == this.channel.name) {
-        this.scrollToBottom();
+      if(d.type == 'message' && d.parsedObject.channel == this.channel.name && this.scrollLocked) {
+        this.newMessagesWithoutRead = true;
       }
     });
-    this.scrollToBottom();
   }
 
 
   scrollToBottom() {
-    setTimeout(() => {
-      if(this.scrollLocked) {
-        this.newMessagesWithoutRead = true; // not in the end
-        return;
-      }
+    this.intevalScroll = setInterval(() => {
+      if(this.scrollLocked || this.manualScroll) return;
       this._scrollToBottom();
     }, 100);
   }
 
   _scrollToBottom() {
     this.newMessagesWithoutRead = false; // in the end
-    this.autoScroll = true;
     this.scrollLocked = false;
     const element = document.getElementById('list-msg');
     const height = element.scrollHeight;
     element.scrollTo(0, height);
   }
 
+  onMouseD(evt) {
+    this.manualScroll = true;
+  }
+
+  onMouseU(evt) {
+    this.manualScroll = false;
+  }
+
   onScroll(evt) {
-    if(this.autoScroll) {
-      this.autoScroll = false;
-      return;
-    }
-    const realTopScroll = evt.target.scrollTop + evt.target.clientHeight;
-    const scrollSize = evt.target.scrollHeight - 50;
-    if(realTopScroll >= scrollSize) { // in the end
-      this.scrollLocked = false;
-      this.newMessagesWithoutRead = false;
-    } else {
-      this.scrollLocked = true;
+    if(this.manualScroll) {
+      const realTopScroll = evt.target.scrollTop + evt.target.clientHeight;
+      const scrollSize = evt.target.scrollHeight - 50;
+      if(realTopScroll >= scrollSize) { // in the end
+        this.scrollLocked = false;
+        this.newMessagesWithoutRead = false;
+      } else {
+        this.scrollLocked = true;
+      }
     }
   }
 
   ionViewWillLeave(){
     this.localChanSrv.setInChannel('');
+    clearInterval(this.intevalScroll);
     this.subsc.unsubscribe();
   }
 

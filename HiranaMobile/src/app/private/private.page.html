@@ -10,7 +10,7 @@
 <ion-content>
   <div class="container">
     <div class="content">
-      <ion-list *ngIf="chat" lines="none" id="list-msg" (scroll)="onScroll($event)">
+      <ion-list *ngIf="chat" lines="none" id="list-msg" (scroll)="onScroll($event)" (touchstart)="onMouseD($event)" (touchend)="onMouseU($event)">
         <ion-item *ngFor="let msg of chat.messages" class="ion-activatable ripple-parent" [class.from-memory]="msg.preloaded">
           <ion-avatar slot="start">
             <img [src]="'https://thira.tandilserver.com/avatar?usr='+msg.author" />

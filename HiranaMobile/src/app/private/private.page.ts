@@ -18,7 +18,8 @@ export class PrivatePage implements OnInit {
 
   private subsc: Subscription;
   private scrollLocked: boolean;
-  private autoScroll: boolean;
+  private manualScroll: boolean;
+  private intevalScroll;
   public newMessagesWithoutRead: boolean;
 
   constructor(private readonly privSrv: PrivsService,
@@ -31,26 +32,22 @@ export class PrivatePage implements OnInit {
     this.chat = this.privSrv.getChat(environment.defaultServerID, this.privName);
     this.localPrivSrv.setInPriv(this.privName);
     this.subsc = this.privSrv.notifications.subscribe(d => {
-      if(d.type == 'message' && d.parsedObject.author == this.privName) {
-        this.scrollToBottom();
+      if(d.type == 'message' && d.parsedObject.author == this.privName && this.scrollLocked) {
+        this.newMessagesWithoutRead = true;
       }
     });
     this.scrollToBottom();
   }
 
   scrollToBottom() {
-    setTimeout(() => {
-      if(this.scrollLocked) {
-        this.newMessagesWithoutRead = true; // not in the end
-        return;
-      }
+    this.intevalScroll = setInterval(() => {
+      if(this.scrollLocked || this.manualScroll) return;
       this._scrollToBottom();
     }, 100);
   }
 
   _scrollToBottom() {
     this.newMessagesWithoutRead = false; // in the end
-    this.autoScroll = true;
     this.scrollLocked = false;
     const element = document.getElementById('list-msg');
     const height = element.scrollHeight;
@@ -58,23 +55,29 @@ export class PrivatePage implements OnInit {
   }
 
   onScroll(evt) {
-    if(this.autoScroll) {
-      this.autoScroll = false;
-      return;
-    }
-    const realTopScroll = evt.target.scrollTop + evt.target.clientHeight;
-    const scrollSize = evt.target.scrollHeight - 50;
-    if(realTopScroll >= scrollSize) { // in the end
-      this.scrollLocked = false;
-      this.newMessagesWithoutRead = false;
-    } else {
-      this.scrollLocked = true;
+    if(this.manualScroll) {
+      const realTopScroll = evt.target.scrollTop + evt.target.clientHeight;
+      const scrollSize = evt.target.scrollHeight - 50;
+      if(realTopScroll >= scrollSize) { // in the end
+        this.scrollLocked = false;
+        this.newMessagesWithoutRead = false;
+      } else {
+        this.scrollLocked = true;
+      }
     }
   }
 
+  onMouseD(evt) {
+    this.manualScroll = true;
+  }
+
+  onMouseU(evt) {
+    this.manualScroll = false;
+  }
 
   ionViewWillLeave(){
     this.localPrivSrv.setInPriv('');
+    clearInterval(this.intevalScroll);
     this.subsc.unsubscribe();
   }
 
