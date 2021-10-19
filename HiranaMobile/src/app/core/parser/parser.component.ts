@@ -1,3 +1,4 @@
+import { CustomEmoteList } from './CustomEmoteList';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -8,6 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ParserComponent implements OnInit {
 
   @Input() message: string;
+  @Input() author: string;
 
   parsed: string;
   ytVideos: string[] = [];
@@ -17,11 +19,7 @@ export class ParserComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // prevent XSS:
-    // const temp = document.createElement('div');
-    // temp.textContent = this.message;
-    // this.parsed = temp.innerHTML;
-    // end of xss prevention
+
     this.parsed = this.message;
     let ytlink;
     do {
@@ -50,8 +48,13 @@ export class ParserComponent implements OnInit {
       }
     } while(link);
 
+    // prevent XSS:
+    const temp = document.createElement('div');
+    temp.textContent = this.parsed;
+    this.parsed = temp.innerHTML;
+    // end of xss prevention
+    this.parsed = CustomEmoteList.parseEmotes(this.parsed, this.author);
 
-    // TODO: check emotes
   }
 
 }
