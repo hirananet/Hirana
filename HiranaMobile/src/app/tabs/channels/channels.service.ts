@@ -1,3 +1,4 @@
+import { CustomEmoteList } from './../../core/parser/CustomEmoteList';
 import { Channel, ChannelsService, ServerService } from 'ircore';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
@@ -33,6 +34,7 @@ export class ChanServ {
       }
       if(d.type == 'message') {
         // new message in channel
+        CustomEmoteList.effectChecker(d.parsedObject.content, d.parsedObject.author);
         if(d.parsedObject.channel != this.inChannel) {
           this.channelList.find(chnl => chnl.name == d.parsedObject.channel).notifications++;
         }

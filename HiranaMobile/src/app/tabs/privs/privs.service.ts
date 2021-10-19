@@ -1,3 +1,4 @@
+import { CustomEmoteList } from './../../core/parser/CustomEmoteList';
 import { NotificationsService } from './../../core/notifications.service';
 import { PrivsService } from 'ircore';
 import { Injectable } from '@angular/core';
@@ -23,6 +24,7 @@ export class PrivService {
       if(r.type === 'message') {
         const chat = this.getChat(r.parsedObject.author);
         if(chat) {
+          CustomEmoteList.effectChecker(r.parsedObject.content, r.parsedObject.author);
           chat.newMessage(r.parsedObject.content, r.parsedObject.author == this.inPrivate);
           if(r.parsedObject.author == this.inPrivate) {
             this.notificationSrv.sendNotification(`@${r.parsedObject.author}`, r.parsedObject.content);

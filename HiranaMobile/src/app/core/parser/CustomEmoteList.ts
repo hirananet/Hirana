@@ -188,7 +188,7 @@ export class CustomEmoteList {
     ]
   };
 
-  public static effectChecker(name: string, author: string) {
+  public static _effectChecker(name: string, author: string) {
     if (author === 'Gabriela-') {
       if (name === 'magia') {
         startEventEffect();
@@ -236,6 +236,16 @@ export class CustomEmoteList {
     }
   }
 
+  public static effectChecker(text: string, author: string) {
+    const faces = text.match(/:([a-zA-Z0-9]+):/g);
+    if (faces) {
+      faces.forEach(face => {
+        const realName = face.replace(':', '').replace(':', '');
+        this._effectChecker(realName, author);
+      })
+    }
+  }
+
   private static getFace(name: string, author: string): string {
     if(this.emotes.find(n => n == name)) {
       return 'assets/emotes/' + name + '.png';
@@ -252,9 +262,6 @@ export class CustomEmoteList {
     if (faces) {
       faces.forEach(face => {
         const realName = face.replace(':', '').replace(':', '');
-        if(!preloaded) {
-          this.effectChecker(realName, author);
-        }
         const realLocation = this.getFace(realName, author);
         if (realLocation) {
           text = text.replace(face, '<img src="' + realLocation + '" class="faceEmote ' + realName + '" data-name="' +
