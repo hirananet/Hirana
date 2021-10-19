@@ -20,7 +20,7 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-list>
+        <ion-list lines="none">
           <ion-item *ngFor="let user of channel.users" class="ion-activatable ripple-parent" (click)="openPriv(user.fullNick.nick)">
             <ion-avatar slot="start">
               <img [src]="'https://thira.tandilserver.com/avatar?usr='+user.fullNick.nick" />

@@ -10,7 +10,7 @@
 <ion-content>
   <div class="container">
     <div class="content">
-      <ion-list *ngIf="chat">
+      <ion-list *ngIf="chat" lines="none">
         <ion-item *ngFor="let msg of chat.messages" class="ion-activatable ripple-parent">
           <ion-avatar slot="start">
             <img [src]="'https://thira.tandilserver.com/avatar?usr='+msg.author" />
