@@ -1,6 +1,6 @@
 <article>
   {{parsed}}
   <img *ngFor="let image of images" [src]="image" />
-  <a *ngFor="let link of links" [href]="link" target="__blank">{{link}}</a>
+  <app-link-vcard *ngFor="let link of links" [link]="link"></app-link-vcard>
   <iframe *ngFor="let ytVideo of ytVideos" width="100%" [src]="'https://www.youtube.com/embed/' + ytVideo | safeAll: 'resourceUrl'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen  loading="lazy"></iframe>
 </article>

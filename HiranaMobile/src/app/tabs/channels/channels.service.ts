@@ -1,6 +1,6 @@
 import { Channel, ChannelsService, ServerService } from 'ircore';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environment';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'

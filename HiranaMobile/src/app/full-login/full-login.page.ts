@@ -3,7 +3,7 @@ import { CoreService } from './../core/core.service';
 import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { ServerData, User } from 'ircore';
-import { environment } from '../environment';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-full-login',

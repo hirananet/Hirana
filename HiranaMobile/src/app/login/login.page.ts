@@ -1,9 +1,9 @@
 import { TranslateService } from '@ngx-translate/core';
-import { environment } from '../environment';
 import { CoreService } from './../core/core.service';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ServerData } from 'ircore';
 import { NavController, ToastController } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',

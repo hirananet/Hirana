@@ -2,8 +2,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { ChanServ } from './../channels/channels.service';
 import { Component, OnInit } from '@angular/core';
 import { ServerService, ListService, ChannelListData } from 'ircore';
-import { environment } from 'src/app/environment';
 import { NavController, ToastController } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-list',

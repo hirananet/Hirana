@@ -1,9 +1,9 @@
 import { Subscription } from 'rxjs';
 import { PrivService } from './../tabs/privs/privs.service';
-import { PrivsService, PrivChat, ChannelsService, ServerService } from 'ircore';
+import { PrivsService, PrivChat, ServerService } from 'ircore';
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../environment';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-private',

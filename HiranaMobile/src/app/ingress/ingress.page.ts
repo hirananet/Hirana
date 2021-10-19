@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ConnectionStatus, NoticesService, RawMessage } from 'ircore';
 import { Subscription } from 'rxjs';
 import { NavController, ToastController } from '@ionic/angular';
-import { environment } from '../environment';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-ingress',

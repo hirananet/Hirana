@@ -1,10 +1,10 @@
 import { Subscription } from 'rxjs';
 import { ChanServ } from './../tabs/channels/channels.service';
-import { environment } from './../environment';
 import { Channel, ChannelsService, ServerService } from 'ircore';
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-channel',

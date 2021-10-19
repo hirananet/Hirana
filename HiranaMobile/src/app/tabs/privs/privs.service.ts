@@ -1,7 +1,7 @@
 import { NotificationsService } from './../../core/notifications.service';
 import { PrivsService } from 'ircore';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/app/environment';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
