@@ -1,3 +1,4 @@
+import { ParserModule } from './../core/parser/parser.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,7 +18,8 @@ import { PrivatePage } from './private.page';
     PrivatePageRoutingModule,
     TranslateModule.forChild({
       extend: true
-    })
+    }),
+    ParserModule
   ],
   declarations: [PrivatePage]
 })

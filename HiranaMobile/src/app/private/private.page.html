@@ -20,9 +20,7 @@
               <span class="name">{{msg.author}}</span>
               <span class="date">{{msg.date}}</span>
             </header>
-            <section>
-              {{msg.content}}
-            </section>
+            <app-parser [message]="msg.content"></app-parser>
           </ion-label>
         </ion-item>
       </ion-list>
