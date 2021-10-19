@@ -38,17 +38,17 @@
         <div class="topico" *ngIf="channel.topic">{{channel.topic}}</div>
         <div class="content">
           <ion-list lines="none" id="list-msg" (scroll)="onScroll($event)">
-            <ion-item *ngFor="let msg of channel.messages" class="ion-activatable ripple-parent" [class.from-memory]="msg.preloaded" (click)="openPriv(msg.author)">
-              <ion-avatar slot="start">
+            <ion-item *ngFor="let msg of channel.messages" class="ion-activatable ripple-parent" [class.from-memory]="msg.preloaded">
+              <ion-avatar slot="start" (click)="openPriv(msg.author)">
                 <img [src]="'https://thira.tandilserver.com/avatar?usr='+msg.author" />
               </ion-avatar>
               <ion-label>
-                <header>
+                <header (click)="openPriv(msg.author)">
                   <span class="name" (click)="openPriv(msg.author)">{{msg.author}}</span>
                   <span class="date">{{msg.date}}</span>
                 </header>
                 <section>
-                  {{msg.content}}
+                  <app-parser [message]="msg.content"></app-parser>
                 </section>
               </ion-label>
             </ion-item>

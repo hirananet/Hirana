@@ -1,3 +1,4 @@
+import { ParserModule } from './../core/parser/parser.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { BadgesModule } from './../components/badges/badges.module';
 import { NgModule } from '@angular/core';
@@ -19,7 +20,8 @@ import { ChannelPage } from './channel.page';
     BadgesModule,
     TranslateModule.forChild({
       extend: true
-    })
+    }),
+    ParserModule
   ],
   declarations: [ChannelPage]
 })
