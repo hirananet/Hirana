@@ -9,7 +9,7 @@ class cabritasEffect {
   createEffect() {
     for(let i = 0; i<this.cantidadCabras; i++) {
       const elem = document.createElement('img');
-      elem.src = 'assets/eess/cabrita.png';
+      elem.src = 'assets/emotes/cabrita.png';
       elem.classList.add('cabritaEff');
       elem.style.top = '0px';
       elem.style.width = '100px';
@@ -17,7 +17,7 @@ class cabritasEffect {
       document.body.appendChild(elem);
     }
     const elem = document.createElement('img');
-    elem.src = 'assets/eess/cabritab.png';
+    elem.src = 'assets/emotes/cabritab.png';
     elem.classList.add('cabritaEff');
     elem.style.top = '0px';
     elem.style.width = '100px';

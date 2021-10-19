@@ -28,7 +28,7 @@ class barkitoEffect {
 
   createOla(posX, posY, zetta) {
     const elem = document.createElement('img');
-    elem.src = 'assets/eess/ola.png';
+    elem.src = 'assets/sfx/ola.png';
     elem.classList.add('cabritaEff');
     elem.classList.add('olitasEff');
     elem.style.top = (window.innerHeight - posY) + 'px';
@@ -77,7 +77,7 @@ class barkitoEffect {
   createBarkito(posX, posY, spawner) {
     const elem = document.createElement('img');
     const barcoNumero = Math.round(Math.random() * 3) + 1
-    elem.src = 'assets/eess/barco'+barcoNumero+'.png';
+    elem.src = 'assets/sfx/barco'+barcoNumero+'.png';
     elem.classList.add('cabritaEff', 'hidden');
     elem.style.top = (window.innerHeight - posY) + 'px';
     elem.style.width = '150px';

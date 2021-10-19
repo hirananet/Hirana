@@ -5,7 +5,7 @@ class KzzsEffect {
   createEffect() {
     for(let i = 0; i<this.cantidadKzzs; i++) {
       const elem = document.createElement('img');
-      elem.src = 'assets/faces/kiss.png';
+      elem.src = 'assets/emotes/kiss.png';
       elem.style.top = '-150px';
       elem.style.width = '100px';
       elem.style.position = 'fixed';

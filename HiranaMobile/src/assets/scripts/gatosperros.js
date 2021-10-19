@@ -128,5 +128,5 @@ class gatosPerrosEffect {
 
 function startEventEffectGatosPerros() {
   const ceff = new gatosPerrosEffect();
-  ceff.createEffect('assets/eess/cat.png', 'assets/eess/dog.png');
+  ceff.createEffect('assets/sfx/cat.png', 'assets/sfx/dog.png');
 }
