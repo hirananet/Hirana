@@ -74,7 +74,12 @@ export class ChanServ {
 
   public setInChannel(channelName: string) {
     this.inChannel = channelName;
-    this.channelList.find(chnl => chnl.name == channelName).notifications = 0;
+    if(channelName) {
+      const chan = this.channelList.find(chnl => chnl.name == channelName);
+      if(chan) {
+        chan.notifications = 0;
+      }
+    }
   }
 
 }
