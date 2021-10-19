@@ -10,6 +10,7 @@
 
     <ion-item-sliding *ngFor="let privChat of privs">
       <ion-item (click)="openChat(privChat.name)" lines="none" class="ion-activatable ripple-parent">
+        <ion-ripple-effect></ion-ripple-effect>
         <ion-icon slot="start" name="chatbox-ellipses-sharp"></ion-icon>
         <ion-label>{{privChat.name}}</ion-label>
         <ion-badge slot="end" color="primary" *ngIf="privChat.notifications > 0">{{privChat.notifications}}</ion-badge>

@@ -10,6 +10,7 @@
 
     <ion-item-sliding *ngFor="let channel of channels">
       <ion-item (click)="openChannel(channel.name)" lines="none" class="ion-activatable ripple-parent">
+        <ion-ripple-effect></ion-ripple-effect>
         <ion-icon slot="start" name="chatbubbles-sharp"></ion-icon>
         <ion-label>{{channel.name}}</ion-label>
         <ion-badge slot="end" color="primary" *ngIf="channel.notifications > 0">{{channel.notifications}}</ion-badge>
