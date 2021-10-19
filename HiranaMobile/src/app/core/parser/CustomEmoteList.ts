@@ -188,52 +188,52 @@ export class CustomEmoteList {
     ]
   };
 
-  public static effectChecker(author: string, name: string) {
-    // if (author === 'Gabriela-') {
-    //   if (name === 'magia') {
-    //     startEventEffect();
-    //   }
-    //   if (name === 'primavera') {
-    //     startEventEffectPrimavera();
-    //   }
-    //   if (name === 'verano') {
-    //     startEventEffectVerano();
-    //   }
-    //   if (name === 'otono') {
-    //     startEventEffectOtono();
-    //   }
-    //   if (name === 'cabritas') {
-    //     startEventEffectCabritas();
-    //   }
-    //   if (name === 'regalos') {
-    //     startEventEffectRegalo();
-    //   }
-    //   if (name === 'lluvia') {
-    //     startEventEffectMeteor();
-    //   }
-    //   if (name === 'gotitas') {
-    //     RainEvent.rainShow.emit(true);
-    //   }
-    //   if (name === 'kz2') {
-    //     startEventEffectKz2s();
-    //   }
-    //   if (name === 'olitas') {
-    //     startEventEffectBarkito();
-    //   }
-    //   if (name === 'batalla') {
-    //     startEventEffectGatosPerros();
-    //   }
-    // } else if (author === 'Alex' || author === 'Tulkalex' || author === 'Tulkalen') {
-    //   if (name === 'kz2') {
-    //     startEventEffectKz2s(); // Probando
-    //   }
-    //   if (name === 'olitas') {
-    //     startEventEffectBarkito();
-    //   }
-    // }
-    // if(name === 'barco') {
-    //   addBarkitoEffect(author);
-    // }
+  public static effectChecker(name: string, author: string) {
+    if (author === 'Gabriela-') {
+      if (name === 'magia') {
+        startEventEffect();
+      }
+      if (name === 'primavera') {
+        startEventEffectPrimavera();
+      }
+      if (name === 'verano') {
+        startEventEffectVerano();
+      }
+      if (name === 'otono') {
+        startEventEffectOtono();
+      }
+      if (name === 'cabritas') {
+        startEventEffectCabritas();
+      }
+      if (name === 'regalos') {
+        startEventEffectRegalo();
+      }
+      if (name === 'lluvia') {
+        startEventEffectMeteor();
+      }
+      if (name === 'gotitas') {
+        // RainEvent.rainShow.emit(true);
+      }
+      if (name === 'kz2') {
+        startEventEffectKz2s();
+      }
+      if (name === 'olitas') {
+        startEventEffectBarkito();
+      }
+      if (name === 'batalla') {
+        startEventEffectGatosPerros();
+      }
+    } else if (author === 'Alex' || author === 'Tulkalex' || author === 'Tulkalen') {
+      if (name === 'kz2') {
+        startEventEffectKz2s(); // Probando
+      }
+      if (name === 'olitas') {
+        startEventEffectBarkito();
+      }
+    }
+    if(name === 'barco') {
+      addBarkitoEffect(author);
+    }
   }
 
   private static getFace(name: string, author: string): string {
@@ -247,11 +247,14 @@ export class CustomEmoteList {
     return null;
   }
 
-  public static parseEmotes(text: string, author: string): string {
+  public static parseEmotes(text: string, author: string, preloaded: boolean): string {
     const faces = text.match(/:([a-zA-Z0-9]+):/g);
     if (faces) {
       faces.forEach(face => {
         const realName = face.replace(':', '').replace(':', '');
+        if(!preloaded) {
+          this.effectChecker(realName, author);
+        }
         const realLocation = this.getFace(realName, author);
         if (realLocation) {
           text = text.replace(face, '<img src="' + realLocation + '" class="faceEmote ' + realName + '" data-name="' +

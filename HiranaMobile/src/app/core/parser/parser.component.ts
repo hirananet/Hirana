@@ -10,6 +10,7 @@ export class ParserComponent implements OnInit {
 
   @Input() message: string;
   @Input() author: string;
+  @Input() preloaded: boolean;
 
   parsed: string;
   ytVideos: string[] = [];
@@ -53,7 +54,7 @@ export class ParserComponent implements OnInit {
     temp.textContent = this.parsed;
     this.parsed = temp.innerHTML;
     // end of xss prevention
-    this.parsed = CustomEmoteList.parseEmotes(this.parsed, this.author);
+    this.parsed = CustomEmoteList.parseEmotes(this.parsed, this.author, this.preloaded);
 
   }
 
