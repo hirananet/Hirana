@@ -1,6 +1,6 @@
 import { TranslateService } from '@ngx-translate/core';
 import { CoreService } from './../core/core.service';
-import { ServerService } from 'ircore';
+import { ServerService, ServerData } from 'ircore';
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
@@ -22,16 +22,23 @@ export class ConfigsPage implements OnInit {
 
   ionViewWillEnter(){
     this.nick = this.srvSrv.getCurrentNick(environment.defaultServerID);
-    localStorage.setItem('hm_lastNick', this.nick);
     this.serverName = this.cSrv.getServerName();
   }
 
   changeNick() {
     this.srvSrv.setNick(environment.defaultServerID, this.nick);
+    this.updateConnectionNick(this.nick);
     this.confirm(this.translateSrv.instant('CONFIGS.NICK_CHANGED'));
   }
 
   ngOnInit() {
+  }
+
+  updateConnectionNick(nick: string) {
+    const lastConnection: ServerData = JSON.parse(localStorage.getItem('hm_connection'));
+    lastConnection.user.nick = nick;
+    localStorage.setItem('hm_lastNick', this.nick);
+    localStorage.setItem('hm_connection', JSON.stringify(lastConnection));
   }
 
   loadImageFromDevice(evt) {
