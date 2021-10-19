@@ -1,3 +1,4 @@
+import { NotificationsService } from './../../core/notifications.service';
 import { PrivsService } from 'ircore';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/app/environment';
@@ -10,7 +11,7 @@ export class PrivService {
   private privList: PrivChatData[] = [];
   private inPrivate: string;
 
-  constructor(private readonly privSrv: PrivsService) {
+  constructor(private readonly privSrv: PrivsService, private readonly notificationSrv: NotificationsService) {
     this.loadPrivs();
     privSrv.notifications.subscribe(r => {
       if(r.type === 'new-priv') {
@@ -23,6 +24,9 @@ export class PrivService {
         const chat = this.getChat(r.parsedObject.author);
         if(chat) {
           chat.newMessage(r.parsedObject.content, r.parsedObject.author == this.inPrivate);
+          if(r.parsedObject.author == this.inPrivate) {
+            this.notificationSrv.sendNotification(`@${r.parsedObject.author}`, r.parsedObject.content);
+          }
         }
       }
     });
