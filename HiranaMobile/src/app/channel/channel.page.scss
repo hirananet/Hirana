@@ -24,6 +24,8 @@
     ion-list {
       --background: transparent;
       background-color: transparent;
+      max-height: 100%;
+      overflow-y: scroll;
       ion-item {
         --background: transparent;
         background-color: var(--message-box);
