@@ -16,7 +16,10 @@
     </ion-list-header>
     <ion-item>
       <ion-label>{{'CONFIGS.NICK' | translate}}</ion-label>
-      <ion-input [(ngModel)]="nick" [disabled]="true"></ion-input>
+      <ion-input [(ngModel)]="nick"></ion-input>
+      <ion-button slot="end" (click)="changeNick()">
+        {{'CONFIGS.CHANGE' | translate}}
+      </ion-button>
     </ion-item>
     <ion-item>
       <ion-label>{{'CONFIGS.AVATAR' | translate}}</ion-label>

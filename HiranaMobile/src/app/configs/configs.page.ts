@@ -22,7 +22,13 @@ export class ConfigsPage implements OnInit {
 
   ionViewWillEnter(){
     this.nick = this.srvSrv.getCurrentNick(environment.defaultServerID);
+    localStorage.setItem('hm_lastNick', this.nick);
     this.serverName = this.cSrv.getServerName();
+  }
+
+  changeNick() {
+    this.srvSrv.setNick(environment.defaultServerID, this.nick);
+    this.confirm(this.translateSrv.instant('CONFIGS.NICK_CHANGED'));
   }
 
   ngOnInit() {
@@ -34,6 +40,14 @@ export class ConfigsPage implements OnInit {
 
   openPopupFile() {
     document.getElementById('file-input').click();
+  }
+
+  async confirm(message: string) {
+    const alert = await this.alertCtrl.create({
+      message: message,
+      buttons: [this.translateSrv.instant('OK')]
+    });
+    await alert.present();
   }
 
   async logout() {

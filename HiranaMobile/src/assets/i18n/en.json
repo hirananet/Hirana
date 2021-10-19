@@ -62,7 +62,9 @@
     "WIPE_D": "This action delete all configurations, messages, channels, etc.",
     "LOGOUT": "Logout",
     "LOGOUT_D": "This delete the connection config and disconnect you.",
-    "CLIENT": "Client"
+    "CLIENT": "Client",
+    "CHANGE": "Change",
+    "NICK_CHANGED": "Nick changed successfull"
   },
   "MESSAGE": "Your message here.",
   "NO_MESSAGES": "No messages.",

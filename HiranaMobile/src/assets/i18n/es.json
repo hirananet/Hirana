@@ -62,7 +62,9 @@
     "WIPE_D": "Esto eliminará la configuración, los mensajes, los canales, etc.",
     "LOGOUT": "Desconectar",
     "LOGOUT_D": "Esto eliminará la configuración y te desconectará.",
-    "CLIENT": "Cliente"
+    "CLIENT": "Cliente",
+    "CHANGE": "Cambiar",
+    "NICK_CHANGED": "Nick modificado correctamente."
   },
   "MESSAGE": "Tu mensaje aquí.",
   "NO_MESSAGES": "No hay mensajes",
