@@ -1,13 +1,14 @@
 a.vcard {
   display: block;
   width: 100%;
-  background: var(--vcard-background);
   text-decoration: none;
-  padding: 10px;
-  border-radius: 5px;
   color: var(--vcard-color);
   margin-top: 5px;
   position: relative;
+  border: 1px solid var(--vcard-border-color);
+  padding: 3px;
+  border-radius: 3px;
+  background: var(--vcard-background-color);
   span {
     font-size: 12px;
     width: calc(100% - 43px);

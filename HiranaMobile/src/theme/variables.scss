@@ -35,7 +35,10 @@
   --ion-menu-bg: #1c2228;
   --ion-color-success: #4bb91e;
   --ion-color-success-contrast: black;
-  --message-box: #ffffffe0;
+  --message-box: #ffffffe3;
+  --message-box-shadow: #bdcad4;
+  --vcard-border-color: #bdcad4;
+  --vcard-background-color: white;
   --ion-color-primary-rgb: 28,34,41;
   --message-author-color: #181918;
   --no-messages: #000000b5;
@@ -119,7 +122,10 @@
     --ion-color-medium: #9e9a91;
     --ion-color-tertiary-contrast: #ffffff;
     --ion-color-success-contrast: black;
-    --message-box: #0e0e0e;
+    --message-box: #0e0e0ed9;
+    --message-box-shadow: #3e3e3e;
+    --vcard-border-color: transparent;
+    --vcard-background-color: black;
     --ion-color-primary-rgb: 28,34,41;
     --chat-bg-pattern: #3e3e3e;
     --message-author-color: wheat;

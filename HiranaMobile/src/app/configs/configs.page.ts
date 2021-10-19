@@ -2,8 +2,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { CoreService } from './../core/core.service';
 import { ServerService } from 'ircore';
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../environment';
 import { AlertController } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-configs',

@@ -31,13 +31,13 @@
         background-color: var(--message-box);
         border-radius: 10px;
         margin: 10px;
-        box-shadow: inset 0px 0px 15px #bdcad4;
+        box-shadow: inset 0px 0px 15px var(--message-box-shadow);
         align-items: flex-start;
         ion-avatar {
           margin: 10px 10px 10px -10px;
         }
         &.from-memory {
-          opacity: 0.85;
+          opacity: 0.9;
         }
         header {
           font-weight: bold;
