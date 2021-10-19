@@ -59,6 +59,7 @@ export class ConfigsPage implements OnInit {
         localStorage.removeItem('hm_channels');
         localStorage.removeItem('hm_privs');
         localStorage.removeItem('hm_lastNick');
+        this.srvSrv.databaseWipe(environment.defaultServerID);
         window.location.reload();
       }}]
     });
