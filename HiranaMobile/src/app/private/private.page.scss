@@ -24,6 +24,13 @@
         header {
           font-weight: bold;
           color: var(--message-author-color);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .date {
+            font-weight: 400;
+            font-size: 10px;
+          }
         }
         section {
           white-space: initial;
