@@ -83,9 +83,9 @@ export class ChannelPage implements OnInit {
   }
 
   ionViewWillLeave(){
-    this.localChanSrv.setInChannel('');
     clearInterval(this.intevalScroll);
     this.subsc.unsubscribe();
+    this.localChanSrv.setInChannel('');
   }
 
   openPriv(nick: string) {
