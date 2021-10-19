@@ -56,6 +56,19 @@
   }
 }
 
+.newMessages {
+  position: fixed;
+  z-index: 1;
+  bottom: 52px;
+  width: 200px;
+  left: calc(50vw - 100px);
+  background: #1c2229;
+  color: #ffa9a9;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
 ion-menu {
   ion-content {
     --background: var(--ion-menu-bg);

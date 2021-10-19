@@ -20,7 +20,7 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-list lines="none">
+        <ion-list>
           <ion-item *ngFor="let user of channel.users" class="ion-activatable ripple-parent" (click)="openPriv(user.fullNick.nick)">
             <ion-avatar slot="start">
               <img [src]="'https://thira.tandilserver.com/avatar?usr='+user.fullNick.nick" />
@@ -37,7 +37,7 @@
       <div class="container">
         <div class="topico" *ngIf="channel.topic">{{channel.topic}}</div>
         <div class="content">
-          <ion-list lines="none">
+          <ion-list lines="none" id="list-msg" (scroll)="onScroll($event)">
             <ion-item *ngFor="let msg of channel.messages" class="ion-activatable ripple-parent" (click)="openPriv(msg.author)">
               <ion-avatar slot="start">
                 <img [src]="'https://thira.tandilserver.com/avatar?usr='+msg.author" />
@@ -53,6 +53,9 @@
               </ion-label>
             </ion-item>
           </ion-list>
+        </div>
+        <div class="newMessages" *ngIf="newMessagesWithoutRead" (click)="_scrollToBottom()">
+          Nuevos mensajes sin leer
         </div>
         <div class="inputBox">
           <input type="text" [placeholder]="'MESSAGE' | translate" [(ngModel)]="message" (keypress)="kp($event)"/>

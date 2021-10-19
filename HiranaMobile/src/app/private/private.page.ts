@@ -34,7 +34,7 @@ export class PrivatePage implements OnInit {
   }
 
   kp(evt) {
-    if(evt.charCode==13) {
+    if(evt.charCode==13 && this.message && this.message.trim().length > 0) {
       this.srvSrv.sendPrivMSG(environment.defaultServerID, this.privName, this.message);
       this.message = '';
     }
