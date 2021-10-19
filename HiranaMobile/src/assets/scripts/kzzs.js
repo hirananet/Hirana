@@ -1,8 +1,11 @@
+let kzzsStarted = false;
+
 class KzzsEffect {
   cantidadKzzs = 50;
   kzzs = [];
 
   createEffect() {
+    kzzsStarted = true;
     for(let i = 0; i<this.cantidadKzzs; i++) {
       const elem = document.createElement('img');
       elem.src = 'assets/emotes/kiss.png';
@@ -16,9 +19,10 @@ class KzzsEffect {
   }
 
   initialPositionKzzs() {
-    const maxY = window.innerHeight - 200;
-    const maxX = window.innerWidth;
+    const maxY = window.innerHeight - 100;
+    const maxX = window.innerWidth - 100;
     let time = 150;
+    let removes = 0;
     this.kzzs.forEach(kzz => {
       setTimeout(() => {
         const posY = this.getRandomInt(maxY);
@@ -28,6 +32,10 @@ class KzzsEffect {
         kzz.classList.add('kzzsEff');
         setTimeout(() => {
           kzz.remove();
+          removes++;
+          if(removes == this.cantidadKzzs) {
+            kzzsStarted = false;
+          }
         }, 1500);
       }, time);
       time += 75;
@@ -42,6 +50,7 @@ class KzzsEffect {
 }
 
 function startEventEffectKz2s() {
+  if(kzzsStarted) return;
   const ceff = new KzzsEffect();
   ceff.createEffect();
 }
