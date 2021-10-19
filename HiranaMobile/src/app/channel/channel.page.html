@@ -55,7 +55,7 @@
           </ion-list>
         </div>
         <div class="newMessages" *ngIf="newMessagesWithoutRead" (click)="_scrollToBottom()">
-          Nuevos mensajes sin leer
+          {{'NEW_MESSAGES' | translate}}
         </div>
         <div class="inputBox">
           <input type="text" [placeholder]="'MESSAGE' | translate" [(ngModel)]="message" (keypress)="kp($event)"/>

@@ -31,7 +31,8 @@
     "OPEN_DM": "Click in nick of a member of a channel to start a direct-message chat",
     "CLOSE": "Close",
     "OPEN": "Open direct message",
-    "OPEN_D": "Write the nick of user"
+    "OPEN_D": "Write the nick of user",
+    "NICK_NOT_EXISTS": "Nick doesn't exists."
   },
   "CHANNELS": {
     "TITLE": "Channels",
@@ -65,6 +66,7 @@
   },
   "MESSAGE": "Your message here.",
   "NO_MESSAGES": "No messages.",
+  "NEW_MESSAGES": "New messages.",
   "OK": "Ok",
   "CANCEL": "Cancel"
 }

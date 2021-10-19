@@ -110,3 +110,17 @@
 ion-content {
   --keyboard-offset: 0!important;
 }
+
+.newMessages {
+  position: fixed;
+  z-index: 1;
+  bottom: 52px;
+  width: 200px;
+  left: calc(50vw - 100px);
+  background: #1c2229;
+  color: #ffa9a9;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px 0px;
+}

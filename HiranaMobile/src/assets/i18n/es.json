@@ -31,7 +31,8 @@
     "OPEN_DM": "Clickea un nick de un miembro de un canal para abrir un privado.",
     "CLOSE": "Cerrar",
     "OPEN": "Abrir privado",
-    "OPEN_D": "Escribe el nick del usuario"
+    "OPEN_D": "Escribe el nick del usuario",
+    "NICK_NOT_EXISTS": "No existe nadie con este nick"
   },
   "CHANNELS": {
     "TITLE": "Canales",
@@ -65,6 +66,7 @@
   },
   "MESSAGE": "Tu mensaje aquí.",
   "NO_MESSAGES": "No hay mensajes",
+  "NEW_MESSAGES": "Nuevos mensajes sin leer",
   "OK": "Ok",
   "CANCEL": "Cancelar"
 }

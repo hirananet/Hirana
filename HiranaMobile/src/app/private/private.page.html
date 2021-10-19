@@ -10,7 +10,7 @@
 <ion-content>
   <div class="container">
     <div class="content">
-      <ion-list *ngIf="chat" lines="none" id="list-msg">
+      <ion-list *ngIf="chat" lines="none" id="list-msg" (scroll)="onScroll($event)">
         <ion-item *ngFor="let msg of chat.messages" class="ion-activatable ripple-parent">
           <ion-avatar slot="start">
             <img [src]="'https://thira.tandilserver.com/avatar?usr='+msg.author" />
@@ -33,6 +33,9 @@
           {{'NO_MESSAGES' | translate}}
         </h4>
       </div>
+    </div>
+    <div class="newMessages" *ngIf="newMessagesWithoutRead" (click)="_scrollToBottom()">
+      {{'NEW_MESSAGES' | translate}}
     </div>
     <div class="inputBox">
       <input type="text" [placeholder]="'MESSAGE' | translate" [(ngModel)]="message" (keypress)="kp($event)"/>

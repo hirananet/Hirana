@@ -71,7 +71,7 @@ export class PrivsPage implements OnInit {
                   this.alertController.create({
                     cssClass: 'my-custom-class',
                     header: 'Oops',
-                    message: 'Nick doesn\'t exists.',
+                    message: this.translateSrv.instant('PRIVATES.NICK_NOT_EXISTS'),
                     buttons: ['OK']
                   }).then(alert => {alert.present(); });
                 }
