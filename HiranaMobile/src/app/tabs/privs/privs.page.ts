@@ -24,7 +24,7 @@ export class PrivsPage implements OnInit {
               private readonly loadingController: LoadingController) { }
 
   ngOnInit() {
-    this.privs = this.privSrv.getPrivs();
+    this.privs = this.privSrv.getPrivs().sort((a,b) => b.lastDateMessage - a.lastDateMessage);
   }
 
   openChat(chat: string) {
@@ -38,12 +38,9 @@ export class PrivsPage implements OnInit {
   async presentLoading() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
-      // message: 'Please wait...',
-      // duration: 2000
     });
     await loading.present();
     return loading;
-    // const { role, data } = await loading.onDidDismiss();
   }
 
   async newPriv() {

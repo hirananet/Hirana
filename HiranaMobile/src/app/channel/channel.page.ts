@@ -92,7 +92,9 @@ export class ChannelPage implements OnInit {
     if(evt.charCode==13 && this.message && this.message.trim().length > 0) {
       this.serverSrv.sendChannelMSG(environment.defaultServerID, this.channelHash, this.message);
       this.message = '';
-      this._scrollToBottom();
+      setTimeout(() => {
+        this._scrollToBottom();
+      }, 100);
     }
   }
 
