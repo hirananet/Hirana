@@ -1,7 +1,9 @@
+import { ServerService, PrivsService, NoticesService } from 'ircore';
 import { TranslateService } from '@ngx-translate/core';
 import { PrivService, PrivChatData } from './privs.service';
 import { Component, OnInit } from '@angular/core';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController, LoadingController, NavController } from '@ionic/angular';
+import { environment } from 'src/app/environment';
 
 @Component({
   selector: 'app-privs',
@@ -13,9 +15,13 @@ export class PrivsPage implements OnInit {
   public privs: PrivChatData[] = [];
 
   constructor(private readonly privSrv: PrivService,
-              private navCtrl: NavController,
-              public alertController: AlertController,
-              private translateSrv: TranslateService) { }
+              private readonly basePrivSrv: PrivsService,
+              private readonly baseNoticeSrv: NoticesService,
+              private readonly srvSrv: ServerService,
+              private readonly navCtrl: NavController,
+              private readonly alertController: AlertController,
+              private readonly translateSrv: TranslateService,
+              private readonly loadingController: LoadingController) { }
 
   ngOnInit() {
     this.privs = this.privSrv.getPrivs();
@@ -27,6 +33,17 @@ export class PrivsPage implements OnInit {
 
   removeChat(chat: string) {
     this.privSrv.removePriv(chat);
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      // message: 'Please wait...',
+      // duration: 2000
+    });
+    await loading.present();
+    return loading;
+    // const { role, data } = await loading.onDidDismiss();
   }
 
   async newPriv() {
@@ -45,7 +62,30 @@ export class PrivsPage implements OnInit {
         text: this.translateSrv.instant('OK'),
         handler: (d) => {
           if(d.nickName) {
-            this.openChat(d.nickName);
+            this.presentLoading().then(loader => {
+              const pSub = this.basePrivSrv.notifications.subscribe(d => {
+                if(d.type == 'non-existant') {
+                  loader.dismiss();
+                  pSub.unsubscribe();
+                  nSub.unsubscribe();
+                  this.alertController.create({
+                    cssClass: 'my-custom-class',
+                    header: 'Oops',
+                    message: 'Nick doesn\'t exists.',
+                    buttons: ['OK']
+                  }).then(alert => {alert.present(); });
+                }
+              });
+              const nSub = this.baseNoticeSrv.notifications.subscribe(d => {
+                if(d.type == 'whois-start') {
+                  loader.dismiss();
+                  this.openChat(d.raw.partials[3]);
+                  pSub.unsubscribe();
+                  nSub.unsubscribe();
+                }
+              });
+              this.srvSrv.whois(environment.defaultServerID, d.nickName);
+            });
           } else {
             return false;
           }
