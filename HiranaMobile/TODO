@@ -1,6 +1,3 @@
-IndexedDB:
-* borrar conversación al borrar chat/canal de IndexedDB
-
 Parsing:
 * Links
 * Fotos
