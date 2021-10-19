@@ -47,7 +47,7 @@
                   <span class="name" (click)="openPriv(msg.author)">{{msg.author}}</span>
                   <span class="date">{{msg.date}}</span>
                 </header>
-                <app-parser [message]="msg.content"></app-parser>
+                <app-parser [message]="msg.content" [author]="msg.author" [preloaded]="msg.preloaded"></app-parser>
               </ion-label>
             </ion-item>
           </ion-list>
