@@ -73,15 +73,21 @@ export class LoginPage implements OnInit {
       return;
     }
     const srvData = new ServerData();
-    srvData.ircServer = 'hnc.hirana.net';
-    srvData.ircPort = 443;
+    if(environment.production) {
+      srvData.ircServer = 'hnc.hirana.net';
+      srvData.ircPort = 443;
+      srvData.withSSL = true;
+    } else {
+      srvData.ircServer = 'localhost';
+      srvData.ircPort = 7000;
+      srvData.withSSL = false;
+    }
     srvData.user.nick = this.nick2;
     srvData.user.altNick = this.nick2+'_';
     srvData.user.user = this.nick2;
     srvData.user.password = this.password;
     srvData.user.identify = true;
     srvData.withWebSocket = true;
-    srvData.withSSL = true;
     srvData.serverID = environment.defaultServerID;
     srvData.hncBouncered = true;
     localStorage.setItem('hm_lastNick', srvData.user.nick);
