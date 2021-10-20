@@ -42,6 +42,12 @@ export class CoreService {
       const subscript = this.noticeSrv.notifications.subscribe(d => {
         if(d.type == 'require-pass') {
           this.serverSrv.serverPass(srvData.serverID, srvData.user.user, srvData.user.password);
+          if(srvData.hncBouncered) {
+            // Register notification push
+            setTimeout(() => {
+              this.serverSrv.sendToServer(srvData.serverID, "PUSH <token here>")
+            }, 1000);
+          }
           if(!srvData.user.identify) {
             subscript.unsubscribe();
           }
@@ -62,6 +68,10 @@ export class CoreService {
   public setConnection(srvData: ServerData) {
     this.lastConnectionServer = srvData
     this.ingressed = true;
+  }
+
+  public getLastConnection() {
+    return this.lastConnectionServer;
   }
 
 }
