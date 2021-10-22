@@ -76,6 +76,7 @@ export class ConfigsPage implements OnInit {
       header: this.translateSrv.instant('CONFIGS.WIPE'),
       message: this.translateSrv.instant('CONFIGS.WIPE_D'),
       buttons: [this.translateSrv.instant('CANCEL'), {text: this.translateSrv.instant('OK'), handler: () => {
+        this.srvSrv.sendToServer(environment.defaultServerID, 'HQUIT wipe');
         localStorage.removeItem('hm_connection');
         localStorage.removeItem('hm_channels');
         localStorage.removeItem('hm_privs');
