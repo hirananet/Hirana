@@ -1,6 +1,7 @@
 import { ServerData, ServerService, NoticesService, PrivsService, ChannelsService } from 'ircore';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { ActionPerformed, PushNotifications, Token } from '@capacitor/push-notifications';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,22 @@ export class CoreService {
     });
     this.privSrv.enableAutoSave();
     this.chnlSrv.enableAutoSave();
+    PushNotifications.addListener(
+      'registration',
+      (token: Token) => {
+        this.serverSrv.sendToServer(environment.defaultServerID, `PUSH ${token.value}`);
+      }
+    );
+    // PushNotifications.addListener(
+    //   'pushNotificationActionPerformed',
+    //   async (notification: ActionPerformed) => {
+    //     const data = notification.notification.data;
+    //     console.log('Action performed: ' + JSON.stringify(notification.notification));
+    //     if (data.detailsId) {
+    //       this.router.navigateByUrl(`/home/${data.detailsId}`);
+    //     }
+    //   }
+    // );
   }
 
   getServerData(serverID: string): ServerData {
@@ -50,7 +67,11 @@ export class CoreService {
           if(srvData.hncBouncered) {
             // Register notification push
             setTimeout(() => {
-              this.serverSrv.sendToServer(srvData.serverID, "PUSH <token here>")
+              PushNotifications.requestPermissions().then((premission) => {
+                if(premission.receive == 'granted') {
+                  PushNotifications.register();
+                }
+              });
             }, 1000);
           }
           if(!srvData.user.identify) {
