@@ -53,8 +53,7 @@ export class IngressPage implements OnInit, OnDestroy {
         this.cancelButton = true;
         this.presentError(`${status.data.reason} [${status.data.code}] retrying in 5sec`);
         this.timeout = setTimeout(() => {
-          console.log('Reconnect');
-          this.coreSrv.getServerData(environment.defaultServerID).websocket.reconnect();
+          this.coreSrv.reconnect();
         }, 5000);
       }
     });

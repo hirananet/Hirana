@@ -1,5 +1,6 @@
 import { ServerData, ServerService, NoticesService, PrivsService, ChannelsService } from 'ircore';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,10 @@ export class CoreService {
 
   getServerName() {
     return this.serverName;
+  }
+
+  reconnect() {
+    this.serverSrv.reconnect(environment.defaultServerID);
   }
 
   connect(srvData?: ServerData) {
