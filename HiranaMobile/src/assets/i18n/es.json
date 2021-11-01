@@ -64,7 +64,8 @@
     "LOGOUT_D": "Esto eliminará la configuración y te desconectará.",
     "CLIENT": "Cliente",
     "CHANGE": "Cambiar",
-    "NICK_CHANGED": "Nick modificado correctamente."
+    "NICK_CHANGED": "Nick modificado correctamente.",
+    "INFO": "Obtener info HNC"
   },
   "MESSAGE": "Tu mensaje aquí.",
   "NO_MESSAGES": "No hay mensajes",

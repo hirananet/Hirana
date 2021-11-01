@@ -70,6 +70,10 @@ export class ConfigsPage implements OnInit {
     await alert.present();
   }
 
+  info() {
+    this.srvSrv.sendToServer(environment.defaultServerID, 'HNCINFO');
+  }
+
   async wipe() {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',

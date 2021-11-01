@@ -64,7 +64,8 @@
     "LOGOUT_D": "This delete the connection config and disconnect you.",
     "CLIENT": "Client",
     "CHANGE": "Change",
-    "NICK_CHANGED": "Nick changed successfull"
+    "NICK_CHANGED": "Nick changed successfull",
+    "INFO": "Get HNC info"
   },
   "MESSAGE": "Your message here.",
   "NO_MESSAGES": "No messages.",

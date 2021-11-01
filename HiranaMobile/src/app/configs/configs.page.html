@@ -56,6 +56,10 @@
     </ion-item>
   </ion-list>
   <footer>
+    <ion-button expand="full" color="principal" (click)="info()">
+      <ion-icon slot="start" icon="trash-sharp"></ion-icon>
+      {{'CONFIGS.INFO' | translate}}
+    </ion-button>
     <ion-button expand="full" color="danger" (click)="wipe()">
       <ion-icon slot="start" icon="trash-sharp"></ion-icon>
       {{'CONFIGS.WIPE' | translate}}
