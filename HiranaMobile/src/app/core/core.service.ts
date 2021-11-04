@@ -2,8 +2,9 @@ import { LoadingController } from '@ionic/angular';
 import { ServerData, ServerService, NoticesService, PrivsService, ChannelsService } from 'ircore';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { PushNotifications } from '@capacitor/push-notifications';
+import { PushNotifications, Token } from '@capacitor/push-notifications';
 import { FCM } from "@capacitor-community/fcm";
+import { Capacitor } from '@capacitor/core';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,23 @@ export class CoreService {
     });
     this.privSrv.enableAutoSave();
     this.chnlSrv.enableAutoSave();
+    PushNotifications.addListener(
+      'registration',
+      (token: Token) => {
+        if(Capacitor.getPlatform() == 'ios') {
+          this.serverSrv.sendToServer(environment.defaultServerID, `PUSH ${token.value}`);
+          FCM.getToken()
+          .then((fcmToken) => {
+            console.log('FCMToken', fcmToken.token);
+            this.serverSrv.sendToServer(environment.defaultServerID, `PUSH ${fcmToken.token}`);
+          }).catch(e => {
+            console.log(e);
+          });
+        } else {
+          this.serverSrv.sendToServer(environment.defaultServerID, `PUSH ${token.value}`);
+        }
+      }
+    );
   }
 
   async presentLoading() {
@@ -79,15 +97,7 @@ export class CoreService {
             setTimeout(() => {
               PushNotifications.requestPermissions().then((premission) => {
                 if(premission.receive == 'granted') {
-                  PushNotifications.register().then(() => {
-                    FCM.getToken()
-                      .then((fcmToken) => {
-                        console.log('FCMToken', fcmToken.token);
-                        this.serverSrv.sendToServer(environment.defaultServerID, `PUSH ${fcmToken.token}`);
-                      }).catch(e => {
-                        console.log(e);
-                      });
-                  })
+                  PushNotifications.register();
                 }
               });
             }, 1000);
