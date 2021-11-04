@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalNotifications } from '@capacitor/local-notifications';
+import { PushNotifications, ActionPerformed } from '@capacitor/push-notifications';
 import { NavController } from '@ionic/angular';
 
 @Injectable({
@@ -18,6 +19,20 @@ export class NotificationsService {
 
       }
     });
+    PushNotifications.addListener(
+      'pushNotificationActionPerformed',
+      async (notification: ActionPerformed) => {
+        const data = notification.notification.data;
+        console.log('Action performed: ' + JSON.stringify(notification.notification));
+        if (data.chat) {
+          if(data.chat[0] == '#') {
+
+          } else {
+            this.navCtrl.navigateForward(`/private/${data.chat}`);
+          }
+        }
+      }
+    );
   }
 
   public sendNotification(title: string, message: string, extras) {

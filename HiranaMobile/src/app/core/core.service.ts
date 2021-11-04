@@ -2,7 +2,7 @@ import { LoadingController } from '@ionic/angular';
 import { ServerData, ServerService, NoticesService, PrivsService, ChannelsService } from 'ircore';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { PushNotifications, Token } from '@capacitor/push-notifications';
+import { PushNotifications } from '@capacitor/push-notifications';
 import { FCM } from "@capacitor-community/fcm";
 
 @Injectable({
@@ -27,17 +27,6 @@ export class CoreService {
     });
     this.privSrv.enableAutoSave();
     this.chnlSrv.enableAutoSave();
-    PushNotifications.addListener(
-      'registration',
-      (token: Token) => {
-        FCM.getToken()
-        .then((fcmToken) => {
-          this.serverSrv.sendToServer(environment.defaultServerID, `PUSH ${fcmToken}`);
-        }).catch(e => {
-          console.log(e);
-        });
-      }
-    );
   }
 
   async presentLoading() {
@@ -90,7 +79,15 @@ export class CoreService {
             setTimeout(() => {
               PushNotifications.requestPermissions().then((premission) => {
                 if(premission.receive == 'granted') {
-                  PushNotifications.register();
+                  PushNotifications.register().then(() => {
+                    FCM.getToken()
+                      .then((fcmToken) => {
+                        console.log('FCMToken', fcmToken.token);
+                        this.serverSrv.sendToServer(environment.defaultServerID, `PUSH ${fcmToken.token}`);
+                      }).catch(e => {
+                        console.log(e);
+                      });
+                  })
                 }
               });
             }, 1000);
