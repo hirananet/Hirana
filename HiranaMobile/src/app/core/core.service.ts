@@ -27,18 +27,6 @@ export class CoreService {
     });
     this.privSrv.enableAutoSave();
     this.chnlSrv.enableAutoSave();
-    PushNotifications.addListener(
-      'registration',
-      (token: Token) => {
-        FCM.getToken()
-        .then((fcmToken) => {
-          console.log(JSON.stringify(fcmToken), fcmToken.token, fcmToken);
-          this.serverSrv.sendToServer(environment.defaultServerID, `PUSH ${fcmToken.token}`);
-        }).catch(e => {
-          console.log(e);
-        });
-      }
-    );
   }
 
   async presentLoading() {
@@ -91,7 +79,15 @@ export class CoreService {
             setTimeout(() => {
               PushNotifications.requestPermissions().then((premission) => {
                 if(premission.receive == 'granted') {
-                  PushNotifications.register();
+                  PushNotifications.register().then(() => {
+                    FCM.getToken()
+                      .then((fcmToken) => {
+                        console.log('FCMToken', fcmToken.token);
+                        this.serverSrv.sendToServer(environment.defaultServerID, `PUSH ${fcmToken.token}`);
+                      }).catch(e => {
+                        console.log(e);
+                      });
+                  })
                 }
               });
             }, 1000);
