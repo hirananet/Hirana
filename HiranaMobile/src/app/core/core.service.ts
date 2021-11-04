@@ -3,6 +3,7 @@ import { ServerData, ServerService, NoticesService, PrivsService, ChannelsServic
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { PushNotifications, Token } from '@capacitor/push-notifications';
+import { FCM } from "@capacitor-community/fcm";
 
 @Injectable({
   providedIn: 'root'
@@ -29,19 +30,14 @@ export class CoreService {
     PushNotifications.addListener(
       'registration',
       (token: Token) => {
-        this.serverSrv.sendToServer(environment.defaultServerID, `PUSH ${token.value}`);
+        FCM.getToken()
+        .then((fcmToken) => {
+          this.serverSrv.sendToServer(environment.defaultServerID, `PUSH ${fcmToken}`);
+        }).catch(e => {
+          console.log(e);
+        });
       }
     );
-    // PushNotifications.addListener(
-    //   'pushNotificationActionPerformed',
-    //   async (notification: ActionPerformed) => {
-    //     const data = notification.notification.data;
-    //     console.log('Action performed: ' + JSON.stringify(notification.notification));
-    //     if (data.detailsId) {
-    //       this.router.navigateByUrl(`/home/${data.detailsId}`);
-    //     }
-    //   }
-    // );
   }
 
   async presentLoading() {
