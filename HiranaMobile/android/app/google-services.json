@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "608715160069",
+    "project_id": "hirana",
+    "storage_bucket": "hirana.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608715160069:android:2d9826767d2579e10eba6c",
+        "android_client_info": {
+          "package_name": "net.hirana.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608715160069-0594qqtep5srk7so0ci67jfe13vn18ph.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "net.hirana.mobile",
+            "certificate_hash": "483dfabf8b5e58a3580f172858427b2d2c0fa0df"
+          }
+        },
+        {
+          "client_id": "608715160069-kugukni1hacueoje7542b07l78oj6q7o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2cho0Ix0zxyvm37flJgj9x0I71wxH9r8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608715160069-kugukni1hacueoje7542b07l78oj6q7o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
