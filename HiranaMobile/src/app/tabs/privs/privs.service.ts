@@ -26,7 +26,7 @@ export class PrivService {
         if(chat) {
           CustomEmoteList.effectChecker(r.parsedObject.content, r.parsedObject.author);
           chat.newMessage(r.parsedObject.content, r.parsedObject.author == this.inPrivate);
-          if(r.parsedObject.author == this.inPrivate) {
+          if(r.parsedObject.author !== this.inPrivate) {
             this.notificationSrv.sendNotification(`@${r.parsedObject.author}`, r.parsedObject.content);
           }
         }
