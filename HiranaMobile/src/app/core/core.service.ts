@@ -31,8 +31,7 @@ export class CoreService {
     PushNotifications.addListener(
       'registration',
       (token: Token) => {
-        if(Capacitor.getPlatform() == 'ios') {
-          this.serverSrv.sendToServer(environment.defaultServerID, `PUSH ${token.value}`);
+        if(Capacitor.getPlatform() == 'ios') { // in this case the token is an APNs token and we need firebase token.
           FCM.getToken()
           .then((fcmToken) => {
             console.log('FCMToken', fcmToken.token);
