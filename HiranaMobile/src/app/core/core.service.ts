@@ -32,7 +32,8 @@ export class CoreService {
       (token: Token) => {
         FCM.getToken()
         .then((fcmToken) => {
-          this.serverSrv.sendToServer(environment.defaultServerID, `PUSH ${fcmToken}`);
+          console.log(JSON.stringify(fcmToken), fcmToken.token, fcmToken);
+          this.serverSrv.sendToServer(environment.defaultServerID, `PUSH ${fcmToken.token}`);
         }).catch(e => {
           console.log(e);
         });
