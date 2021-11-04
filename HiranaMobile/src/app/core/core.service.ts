@@ -45,7 +45,9 @@ export class CoreService {
   }
 
   async presentLoading() {
-    await this.loadingController.dismiss();
+    if(this.reconnecting) {
+      return;
+    }
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       message: 'connecting...'
@@ -66,8 +68,8 @@ export class CoreService {
   }
 
   setReconnectingStatus() {
-    this.reconnecting = true;
     this.presentLoading();
+    this.reconnecting = true;
   }
 
   isReconnecting(){
