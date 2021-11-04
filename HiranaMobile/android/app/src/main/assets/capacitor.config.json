@@ -1,0 +1,15 @@
+{
+	"appId": "net.hirana",
+	"appName": "mobile",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"plugins": {
+		"PushNotifications": {
+			"presentationOptions": [
+				"badge",
+				"sound",
+				"alert"
+			]
+		}
+	}
+}
