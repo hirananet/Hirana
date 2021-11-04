@@ -9,9 +9,3 @@ UX:
 --- Hnc: Hirana network connection
 * Hacer el Hnc
 * Agregar sistema de notificaciones
-
-
-Generate resources for platform:
-
-cordova-res android --skip-config --copy
-cordova-res ios --skip-config --copy
