@@ -11,6 +11,7 @@ export class CoreService {
   private ingressed = false;
   private serverName = '';
   private lastConnectionServer: ServerData;
+  private reconnecting = true;
 
   constructor(private serverSrv: ServerService,
               private noticeSrv: NoticesService,
@@ -53,6 +54,10 @@ export class CoreService {
     this.serverSrv.reconnect(environment.defaultServerID);
   }
 
+  setReconnectingStatus() {
+    this.reconnecting = true;
+  }
+
   connect(srvData?: ServerData) {
     if(srvData) {
       this.lastConnectionServer = srvData;
@@ -62,6 +67,7 @@ export class CoreService {
     this.serverSrv.connect(srvData);
     if(srvData.user.password) {
       const subscript = this.noticeSrv.notifications.subscribe(d => {
+        this.reconnecting = false;
         if(d.type == 'require-pass') {
           this.serverSrv.serverPass(srvData.serverID, srvData.user.user, srvData.user.password);
           if(srvData.hncBouncered) {

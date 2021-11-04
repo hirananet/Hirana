@@ -23,8 +23,7 @@ export class IngressPage implements OnInit, OnDestroy {
   constructor(private readonly notySrv: NoticesService,
               private readonly coreSrv: CoreService,
               private readonly navCtrl: NavController,
-              private readonly toastController: ToastController,
-              private readonly router: Router) { }
+              private readonly toastController: ToastController) { }
 
   ngOnInit() {
     this.notySub = this.notySrv.notifications.subscribe(d => {
@@ -52,6 +51,7 @@ export class IngressPage implements OnInit, OnDestroy {
         // }
         this.cancelButton = true;
         this.presentError(`${status.data.reason} [${status.data.code}] retrying in 5sec`);
+        this.coreSrv.setReconnectingStatus();
         this.timeout = setTimeout(() => {
           this.coreSrv.reconnect();
         }, 5000);
