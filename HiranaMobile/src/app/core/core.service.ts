@@ -1,7 +1,8 @@
+import { LoadingController } from '@ionic/angular';
 import { ServerData, ServerService, NoticesService, PrivsService, ChannelsService } from 'ircore';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { ActionPerformed, PushNotifications, Token } from '@capacitor/push-notifications';
+import { PushNotifications, Token } from '@capacitor/push-notifications';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class CoreService {
   constructor(private serverSrv: ServerService,
               private noticeSrv: NoticesService,
               private privSrv: PrivsService,
-              private chnlSrv: ChannelsService) {
+              private chnlSrv: ChannelsService,
+              private loadingController: LoadingController) {
     this.noticeSrv.notifications.subscribe(d => {
       if(d.type == 'motd') {
         this.serverName = d.raw.partials[0];
@@ -42,6 +44,14 @@ export class CoreService {
     // );
   }
 
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'connecting...'
+    });
+    await loading.present();
+  }
+
   getServerData(serverID: string): ServerData {
     return this.serverSrv.getServerById(serverID);
   }
@@ -56,6 +66,11 @@ export class CoreService {
 
   setReconnectingStatus() {
     this.reconnecting = true;
+    this.presentLoading();
+  }
+
+  isReconnecting(){
+    return this.reconnecting;
   }
 
   connect(srvData?: ServerData) {
@@ -68,6 +83,7 @@ export class CoreService {
     if(srvData.user.password) {
       const subscript = this.noticeSrv.notifications.subscribe(d => {
         this.reconnecting = false;
+        this.loadingController.dismiss();
         if(d.type == 'require-pass') {
           this.serverSrv.serverPass(srvData.serverID, srvData.user.user, srvData.user.password);
           if(srvData.hncBouncered) {
