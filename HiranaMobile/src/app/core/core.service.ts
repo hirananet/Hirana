@@ -45,6 +45,7 @@ export class CoreService {
   }
 
   async presentLoading() {
+    await this.loadingController.dismiss();
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       message: 'connecting...'
