@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">mobile</string>
-    <string name="title_activity_main">mobile</string>
-    <string name="package_name">net.hirana</string>
-    <string name="custom_url_scheme">net.hirana</string>
+    <string name="app_name">Hirana</string>
+    <string name="title_activity_main">Hirana</string>
+    <string name="package_name">net.hirana.mobile</string>
+    <string name="custom_url_scheme">net.hirana.mobile</string>
 </resources>

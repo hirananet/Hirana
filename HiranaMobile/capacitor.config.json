@@ -1,6 +1,6 @@
 {
-	"appId": "net.hirana",
-	"appName": "mobile",
+	"appId": "net.hirana.mobile",
+	"appName": "Hirana",
 	"webDir": "www",
 	"bundledWebRuntime": false,
   "plugins": {
