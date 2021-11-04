@@ -2,7 +2,7 @@ import { LoadingController } from '@ionic/angular';
 import { ServerData, ServerService, NoticesService, PrivsService, ChannelsService } from 'ircore';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { PushNotifications, Token } from '@capacitor/push-notifications';
+import { PushNotifications } from '@capacitor/push-notifications';
 import { FCM } from "@capacitor-community/fcm";
 
 @Injectable({
