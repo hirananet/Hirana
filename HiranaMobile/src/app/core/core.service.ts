@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { PushNotifications, Token } from '@capacitor/push-notifications';
 import { FCM } from "@capacitor-community/fcm";
 import { Capacitor } from '@capacitor/core';
+import { Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class CoreService {
   private serverName = '';
   private lastConnectionServer: ServerData;
   private reconnecting = true;
+  private passwordSubscriptor: Subscription;
 
   constructor(private serverSrv: ServerService,
               private noticeSrv: NoticesService,
@@ -66,7 +68,13 @@ export class CoreService {
   }
 
   reconnect() {
-    this.serverSrv.reconnect(environment.defaultServerID);
+    const srvData = this.serverSrv.reconnect(environment.defaultServerID);
+    console.log('Subscribin for passord ', srvData);
+    if (this.passwordSubscriptor) {
+      this.passwordSubscriptor.unsubscribe();
+      this.passwordSubscriptor = undefined;
+    }
+    this.subscribeForLogin(srvData);
   }
 
   setReconnectingStatus() {
@@ -85,8 +93,13 @@ export class CoreService {
       srvData = this.lastConnectionServer;
     }
     this.serverSrv.connect(srvData);
+    this.subscribeForLogin(srvData);
+    this.ingressed = true;
+  }
+
+  private subscribeForLogin(srvData) {
     if(srvData.user.password) {
-      const subscript = this.noticeSrv.notifications.subscribe(d => {
+      this.passwordSubscriptor = this.noticeSrv.notifications.subscribe(d => {
         this.reconnecting = false;
         this.loadingController.dismiss();
         if(d.type == 'require-pass') {
@@ -102,16 +115,17 @@ export class CoreService {
             }, 1000);
           }
           if(!srvData.user.identify) {
-            subscript.unsubscribe();
+            this.passwordSubscriptor.unsubscribe();
+            this.passwordSubscriptor = undefined;
           }
         }
         if(d.type == 'motd' && srvData.user.identify) {
           this.serverSrv.identify(srvData.serverID, srvData.user.password);
-          subscript.unsubscribe();
+          this.passwordSubscriptor.unsubscribe();
+          this.passwordSubscriptor = undefined;
         }
       });
     }
-    this.ingressed = true;
   }
 
   public isIngressed() {

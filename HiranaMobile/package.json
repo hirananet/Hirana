@@ -34,7 +34,7 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "dexie": "^3.0.3",
     "dexie-observable": "^3.0.0-beta.11",
-    "ircore": "^0.3.1",
+    "ircore": "^0.3.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
